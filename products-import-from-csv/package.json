@@ -1,0 +1,17 @@
+{
+  "name": "crystallize-product-import-csv",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "csv-parse": "4.4.5",
+    "inquirer": "^6.5.1",
+    "node-fetch": "2.6.0",
+    "ora": "^3.4.0",
+    "progress": "^2.0.3"
+  },
+  "keywords": []
+}
