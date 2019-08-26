@@ -6,7 +6,7 @@ async function importProducts({
   tenantId,
   shapeId,
   vatTypeId,
-  rootItemId
+  treeParentId
 }) {
   const chunks = utils.chunkArray(products, 10);
 
@@ -18,7 +18,7 @@ async function importProducts({
         shapeId,
         vatTypeId,
         tree: {
-          parentId: rootItemId
+          parentId: treeParentId
         },
         name: [
           {
@@ -86,7 +86,7 @@ async function importProducts({
       tenantId,
       shapeId,
       vatTypeId,
-      rootItemId
+      treeParentId: rootItemId
     });
 
     console.log(importResult);
