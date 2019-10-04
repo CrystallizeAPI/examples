@@ -1,43 +1,27 @@
-const parseCSV = require("./parse-csv");
-const utils = require("./utils");
+const parseCSV = require('./parse-csv');
+const utils = require('./utils');
 
 async function importProducts({
   products,
   tenantId,
   shapeId,
   vatTypeId,
-  treeParentId
+  treeParentId,
 }) {
   const chunks = utils.chunkArray(products, 10);
 
-  console.log(
-    JSON.stringify(
-      products.map(product => ({
-        ...product,
-        tenantId,
-        shapeId,
-        vatTypeId,
-        tree: {
-          parentId: treeParentId
-        },
-        name: [
-          {
-            language: "en",
-            translation: product.name
-          }
-        ]
-      })),
-      null,
-      3
-    )
-  );
+  const productImportResult = [];
 
   for (let i = 0; i < chunks.length; i++) {
-    await utils.graphQLFetcher({
-      query: `mutation importProducts ($products: [CreateProductInput!]!) {
+    const data = await utils.graphQLFetcher({
+      query: `mutation importProducts($products: [CreateProductInput!]!) {
         product {
           createMany(input: $products) {
             id
+            tree {
+              parentId
+              position
+            }
           }
         }
       }`,
@@ -47,18 +31,23 @@ async function importProducts({
           tenantId,
           shapeId,
           vatTypeId,
+          tree: {
+            parentId: treeParentId,
+          },
           name: [
             {
-              language: "en",
-              translation: product.name
-            }
-          ]
-        }))
-      }
+              language: 'en',
+              translation: product.name,
+            },
+          ],
+        })),
+      },
     });
+
+    productImportResult.push(data);
   }
 
-  return { shapeId, vatTypeId };
+  return productImportResult;
 }
 
 (async function run() {
@@ -66,10 +55,10 @@ async function importProducts({
    * Extract the products from the CSV file. It will map it to a data model
    * that matches the Crystallize product and variant model
    */
-  const { success, error, products } = await parseCSV("/products.csv");
+  const { success, error, products } = await parseCSV('/products.csv');
 
   if (!success) {
-    console.error(error);
+    throw new Error('something went wrong parsing the csv', error);
   } else {
     console.log(`Found ${products.length} product(s) for import`);
 
@@ -78,7 +67,7 @@ async function importProducts({
     const {
       shapeId,
       vatTypeId,
-      rootItemId
+      rootItemId,
     } = await utils.getExtraProductProperties(tenantId);
 
     const importResult = await importProducts({
@@ -86,9 +75,10 @@ async function importProducts({
       tenantId,
       shapeId,
       vatTypeId,
-      treeParentId: rootItemId
+      treeParentId: rootItemId,
     });
 
-    console.log(importResult);
+    console.log('\n Products imported successfully \n');
+    console.log(JSON.stringify(importResult, null, 2));
   }
 })();
