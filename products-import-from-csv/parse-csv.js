@@ -1,18 +1,18 @@
-const fs = require("fs");
-const util = require("util");
-const csvParse = require("csv-parse");
+const fs = require('fs');
+const util = require('util');
+const csvParse = require('csv-parse');
 
 const readFileAsync = util.promisify(fs.readFile);
 
 function getRows(csv) {
   return new Promise((resolve, reject) => {
     const parser = csvParse({
-      delimiter: ","
+      delimiter: ',',
     });
 
     const rows = [];
 
-    parser.on("readable", () => {
+    parser.on('readable', () => {
       let record;
       // eslint-disable-next-line
       while ((record = parser.read())) {
@@ -20,14 +20,14 @@ function getRows(csv) {
       }
     });
 
-    parser.on("error", error => {
+    parser.on('error', error => {
       reject({
-        message: "Could not parse CSV",
-        error
+        message: 'Could not parse CSV',
+        error,
       });
     });
 
-    parser.on("end", () => resolve(rows));
+    parser.on('end', () => resolve(rows));
 
     // Pass in the csv input
     parser.write(csv);
@@ -37,9 +37,9 @@ function getRows(csv) {
 }
 
 function parseAttributes(attributesString) {
-  const parts = attributesString.split(";");
+  const parts = attributesString.split(';');
   return parts.map(part => {
-    const [attribute, value] = part.split("=");
+    const [attribute, value] = part.split('=');
     return { attribute, value };
   });
 }
@@ -52,15 +52,15 @@ function getProductsFromRows(rows) {
   const keys = header.reduce(
     (acc, val, index) => ({
       ...acc,
-      [header[index]]: index
+      [header[index]]: index,
     }),
-    {}
+    {},
   );
 
   const products = [];
 
   rest.forEach(row => {
-    if (row[keys.type] === "product") {
+    if (row[keys.type] === 'product') {
       handleProduct(row);
     } else {
       handleVariant(row);
@@ -70,7 +70,7 @@ function getProductsFromRows(rows) {
   function handleProduct(row) {
     products.push({
       name: row[keys.name],
-      variants: []
+      variants: [],
     });
   }
 
@@ -80,15 +80,15 @@ function getProductsFromRows(rows) {
     product.variants.push({
       name: [
         {
-          language: "en",
-          translation: row[keys.name]
-        }
+          language: 'en',
+          translation: row[keys.name],
+        },
       ],
       sku: row[keys.sku],
       price: parseFloat(row[keys.price], 10),
       stock: parseInt(row[keys.stock], 10),
       attributes: parseAttributes(row[keys.attributes]),
-      isDefault: product.variants.length === 0
+      isDefault: product.variants.length === 0,
     });
   }
 
@@ -97,7 +97,7 @@ function getProductsFromRows(rows) {
 
 module.exports = async function parseCSV(path) {
   try {
-    const csv = await readFileAsync(__dirname + path, "utf-8");
+    const csv = await readFileAsync(__dirname + path, 'utf-8');
 
     const rows = await getRows(csv);
 
