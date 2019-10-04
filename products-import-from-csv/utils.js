@@ -2,23 +2,28 @@ const inquirer = require('inquirer');
 const fetch = require('node-fetch');
 const ora = require('ora');
 
-const config = {
-  token: {
-    id: 'b98b3e8ca964f4cb3768',
-    secret: 'f6430576bf17d1aa93615737b3bc0493b2ae5f61',
-  },
+const TOKEN = {
+  id: undefined,
+  secret: undefined,
 };
 
 async function graphQLFetcher(graphQLParams) {
   try {
+    if (
+      (!TOKEN.id && !TOKEN.secret) ||
+      (!TOKEN.id.length && !TOKEN.secret.length)
+    ) {
+      throw new Error('You must insert your token ID and Secret');
+    }
+
     const response = await fetch(
       'https://pim-dev.crystallize.digital/graph/core',
       {
         method: 'post',
         headers: {
           'Content-Type': 'application/json',
-          'X-Crystallize-Access-Token-Id': config.token.id,
-          'X-Crystallize-Access-Token-Secret': config.token.secret,
+          'X-Crystallize-Access-Token-Id': TOKEN.id,
+          'X-Crystallize-Access-Token-Secret': TOKEN.secret,
         },
         body: JSON.stringify(graphQLParams),
       },
@@ -27,23 +32,19 @@ async function graphQLFetcher(graphQLParams) {
     const json = await response.json();
 
     if (!json.data) {
-      throw new Error('something went wrong with graphQLFetcher', json);
+      throw new Error(JSON.stringify(json, null, 2));
     }
 
     return json.data;
   } catch (error) {
-    throw new Error('something went wrong with graphQLFetcher catch', error);
+    console.error('\n', error, '\n');
+    process.exit();
   }
 }
 
-function setToken(token) {
-  Object.assign(config.token, token);
-}
-
 async function getTenantInfo(tenantId) {
-  try {
-    const data = await graphQLFetcher({
-      query: `query getTenantInfo($tenantId: Int!) {
+  const data = await graphQLFetcher({
+    query: `query getTenantInfo($tenantId: Int!) {
         tenant(id: $tenantId) {
           rootItemId
           shapes {
@@ -64,15 +65,12 @@ async function getTenantInfo(tenantId) {
           }
         }
       }`,
-      variables: {
-        tenantId,
-      },
-    });
+    variables: {
+      tenantId,
+    },
+  });
 
-    return data.tenant;
-  } catch (error) {
-    throw new Error('something wrong happen with getTenantInfo catch', error);
-  }
+  return data.tenant;
 }
 
 function tr(translations) {
@@ -83,9 +81,28 @@ async function getTenantId() {
   const { tenantId: tenantIdInput } = await inquirer.prompt([
     {
       name: 'tenantId',
-      message: 'Please enter the tenant id (e.g. 99)',
+      message: 'Please enter the tenant ID (e.g. 99):',
     },
   ]);
+
+  const { id } = await inquirer.prompt([
+    {
+      name: 'id',
+      message: 'Please enter token ID:',
+    },
+  ]);
+
+  const { secret } = await inquirer.prompt([
+    {
+      name: 'secret',
+      message: 'Please enter token Secret:',
+    },
+  ]);
+
+  Object.assign(TOKEN, {
+    id,
+    secret,
+  });
 
   const tenantId = parseInt(tenantIdInput);
   if (Number.isNaN(tenantId)) {
@@ -100,6 +117,7 @@ async function getTenantId() {
 async function getExtraProductProperties(tenantId) {
   const spinner = ora('Getting tenant info').start();
   const { shapes, vatTypes, rootItemId } = await getTenantInfo(tenantId);
+
   spinner.stop();
 
   const productShapes = shapes.filter(shape => shape.shapeTypeId === 'product');
@@ -171,7 +189,7 @@ function chunkArray(arr, size) {
 
 module.exports = {
   graphQLFetcher,
-  setToken,
+  // setToken,
   getTenantId,
   getExtraProductProperties,
   chunkArray,

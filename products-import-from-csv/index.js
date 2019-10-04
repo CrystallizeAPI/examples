@@ -78,7 +78,7 @@ async function importProducts({
       treeParentId: rootItemId,
     });
 
-    console.log('\n Products imported successfully \n');
+    console.log('\nProducts imported successfully\n');
     console.log(JSON.stringify(importResult, null, 2));
   }
 })();
