@@ -1,0 +1,7 @@
+id,type,sku,name,price,attributes,stock
+1,product,,Teddy bear,,,
+2,variant,teddy-bear-big,Big,99,size=big,99
+3,variant,teddy-bear-regular,Small,79,size=regular;color=red,199
+4,product,,Dinosaur toy,,,
+5,variant,dino-toy-rex-big,Tyrannosaurus Rex,69,size=big;color=blue,61
+6,variant,dino-toy-rex-regular,Tyrannosaurus Rex,59,size=regular;color=green,89
