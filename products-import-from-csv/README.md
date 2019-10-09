@@ -1,4 +1,4 @@
-## Product Import From CSV file
+## Product Import From CSV file to PIM
 
 This script imports product information from a CSV file into your Crystallize [PIM](https://crystallize.com/product/product-information-management). The script uses the [GraphQL PIM API](https://crystallize.com/api) in [Crystallize](https://crystallize.com) to create products automatically based on the contents in your CSV file. 
 
@@ -13,4 +13,4 @@ Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize
 5. run `npm start`
 6. follow command line instructions
 
-You can also read the blogpost on [csv product import]()
+You can also read the blogpost on [CSV product import to PIM]()
