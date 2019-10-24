@@ -16,18 +16,15 @@ async function graphQLFetcher(graphQLParams) {
       throw new Error('You must insert your token ID and Secret');
     }
 
-    const response = await fetch(
-      'https://pim-dev.crystallize.digital/graph/core',
-      {
-        method: 'post',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Crystallize-Access-Token-Id': TOKEN.id,
-          'X-Crystallize-Access-Token-Secret': TOKEN.secret,
-        },
-        body: JSON.stringify(graphQLParams),
+    const response = await fetch('https://pim.crystallize.com/graph/core', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Crystallize-Access-Token-Id': TOKEN.id,
+        'X-Crystallize-Access-Token-Secret': TOKEN.secret,
       },
-    );
+      body: JSON.stringify(graphQLParams),
+    });
 
     const json = await response.json();
 
