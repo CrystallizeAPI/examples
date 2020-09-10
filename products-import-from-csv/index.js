@@ -2,21 +2,22 @@ const parseCSV = require('./parse-csv');
 const utils = require('./utils');
 
 async function importProducts({
+  language,
   products,
   tenantId,
   shapeId,
   vatTypeId,
   treeParentId,
 }) {
-  const chunks = utils.chunkArray(products, 10);
-
   const productImportResult = [];
 
-  for (let i = 0; i < chunks.length; i++) {
-    const data = await utils.graphQLFetcher({
-      query: `mutation importProducts($products: [CreateProductInput!]!) {
+  // Import one product at a time
+  for (let i = 0; i < products.length; i++) {
+    const product = products[i];
+    const response = await utils.graphQLFetcher({
+      query: `mutation importProduct($language: String!, $product: CreateProductInput!) {
         product {
-          createMany(input: $products) {
+          create(input: $product, language: $language) {
             id
             tree {
               parentId
@@ -26,7 +27,8 @@ async function importProducts({
         }
       }`,
       variables: {
-        products: products.map(product => ({
+        language,
+        product: {
           ...product,
           tenantId,
           shapeId,
@@ -34,17 +36,11 @@ async function importProducts({
           tree: {
             parentId: treeParentId,
           },
-          name: [
-            {
-              language: 'en',
-              translation: product.name,
-            },
-          ],
-        })),
+        },
       },
     });
 
-    productImportResult.push(data);
+    productImportResult.push(response);
   }
 
   return productImportResult;
@@ -62,7 +58,7 @@ async function importProducts({
   } else {
     console.log(`Found ${products.length} product(s) for import`);
 
-    const tenantId = await utils.getTenantId();
+    const { tenantId, language } = await utils.getTenantBaseInfo();
 
     const {
       shapeId,
@@ -71,6 +67,7 @@ async function importProducts({
     } = await utils.getExtraProductProperties(tenantId);
 
     const importResult = await importProducts({
+      language,
       products,
       tenantId,
       shapeId,
