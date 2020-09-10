@@ -20,7 +20,7 @@ function getRows(csv) {
       }
     });
 
-    parser.on('error', error => {
+    parser.on('error', (error) => {
       reject({
         message: 'Could not parse CSV',
         error,
@@ -38,7 +38,7 @@ function getRows(csv) {
 
 function parseAttributes(attributesString) {
   const parts = attributesString.split(';');
-  return parts.map(part => {
+  return parts.map((part) => {
     const [attribute, value] = part.split('=');
     return { attribute, value };
   });
@@ -59,7 +59,7 @@ function getProductsFromRows(rows) {
 
   const products = [];
 
-  rest.forEach(row => {
+  rest.forEach((row) => {
     if (row[keys.type] === 'product') {
       handleProduct(row);
     } else {
@@ -78,12 +78,7 @@ function getProductsFromRows(rows) {
     const product = products[products.length - 1];
 
     product.variants.push({
-      name: [
-        {
-          language: 'en',
-          translation: row[keys.name],
-        },
-      ],
+      name: row[keys.name],
       sku: row[keys.sku],
       price: parseFloat(row[keys.price], 10),
       stock: parseInt(row[keys.stock], 10),
