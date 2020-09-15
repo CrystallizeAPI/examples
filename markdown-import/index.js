@@ -1,6 +1,14 @@
 const fromHTML = require('@crystallize/content-transformer/fromHTML');
+var markdown = require('markdown').markdown;
 
 const shared = require('../shared');
+
+const markdownExample = `
+Let's get this markdown into Crystallize
+
+- First item
+- Second item
+`;
 
 const mutationInputTypes = {
   document: 'CreateDocumentInput',
@@ -50,7 +58,7 @@ async function importItem({ language, treeParentId, type, ...item }) {
 
   const importResult = await importItem({
     type,
-    name: 'HTML import example',
+    name: 'Markdown import example',
     language,
     tenantId,
     shapeId,
@@ -59,17 +67,12 @@ async function importItem({ language, treeParentId, type, ...item }) {
       {
         componentId: richTextComponent.id,
         richText: {
-          json: fromHTML(`
-              <p>
-                Hello there. Let's see how we can get this
-                into a well structured <a href="https://crystallize.com/learn/concepts/pim/component/rich-text">Rich Text Component</a>.
-              </p>
-          `),
+          json: fromHTML(markdown.toHTML(markdownExample)),
         },
       },
     ],
   });
 
   console.log(JSON.stringify(importResult, null, 2));
-  console.log('\nHTML imported successfully\n');
+  console.log('\nMarkdown imported successfully\n');
 })();
