@@ -1,5 +1,5 @@
 const fromHTML = require('@crystallize/content-transformer/fromHTML');
-var markdown = require('markdown').markdown;
+var marked = require('marked');
 
 const shared = require('../shared');
 
@@ -67,7 +67,7 @@ async function importItem({ language, treeParentId, type, ...item }) {
       {
         componentId: richTextComponent.id,
         richText: {
-          json: fromHTML(markdown.toHTML(markdownExample)),
+          json: fromHTML(marked(markdownExample)),
         },
       },
     ],
