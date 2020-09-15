@@ -1,3 +1,4 @@
+const shared = require('../shared');
 const parseCSV = require('./parse-csv');
 const utils = require('./utils');
 
@@ -14,7 +15,7 @@ async function importProducts({
   // Import one product at a time
   for (let i = 0; i < products.length; i++) {
     const product = products[i];
-    const response = await utils.graphQLFetcher({
+    const response = await shared.graphQLFetcher({
       query: `mutation importProduct($language: String!, $product: CreateProductInput!) {
         product {
           create(input: $product, language: $language) {
@@ -58,13 +59,13 @@ async function importProducts({
   } else {
     console.log(`Found ${products.length} product(s) for import`);
 
-    const { tenantId, language } = await utils.getTenantBaseInfo();
+    const { tenantId, language } = await shared.getTenantBaseInfo();
 
     const {
       shapeId,
       vatTypeId,
       rootItemId,
-    } = await utils.getExtraProductProperties(tenantId);
+    } = await utils.getExtraProductProperties({ tenantId, language });
 
     const importResult = await importProducts({
       language,
