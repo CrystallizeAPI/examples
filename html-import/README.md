@@ -1,4 +1,4 @@
-## Product Import From CSV file to PIM
+## HTML import to PIM
 
 This script imports generic HTML information into your Crystallize [PIM](https://crystallize.com/product/product-information-management). The script uses the [GraphQL PIM API](https://crystallize.com/api) in [Crystallize](https://crystallize.com) to create an item with a [Rich Text Component](https://crystallize.com/learn/concepts/pim/component/rich-text) with the converted HTML content.
 
@@ -8,5 +8,5 @@ Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize
 
 1. download the repo
 2. install dependencies `npm install`
-3. run `npm start`
+3. run `npm run html-import`
 4. follow command line instructions
