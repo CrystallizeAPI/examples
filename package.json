@@ -1,0 +1,19 @@
+{
+  "name": "crystallize-examples",
+  "version": "2.0.0",
+  "description": "Examples of real-world imports, exports and mutations of Crystallize API",
+  "scripts": {
+    "products-import-from-csv": "node ./products-import-from-csv/index.js",
+    "html-import": "node ./html-import/index.js"
+  },
+  "dependencies": {
+    "@crystallize/content-transformer": "^6.0.0",
+    "csv-parse": "^4.4.7",
+    "dotenv": "^8.2.0",
+    "inquirer": "^6.5.1",
+    "node-fetch": "2.6.1",
+    "ora": "^3.4.0",
+    "progress": "^2.0.3"
+  },
+  "keywords": []
+}
