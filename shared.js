@@ -1,13 +1,13 @@
-require("dotenv").config();
+require('dotenv').config();
 
-const inquirer = require("inquirer");
-const fetch = require("node-fetch");
-const fs = require("fs");
-const ora = require("ora");
+const inquirer = require('inquirer');
+const fetch = require('node-fetch');
+const fs = require('fs');
+const ora = require('ora');
 
 let tenantId = null;
 let tenantIdentifier = process.env.CRYSTALLIZE_TENANT_IDENTIFIER;
-let language = "en";
+let language = 'en';
 const TOKEN = {
   id: process.env.CRYSTALLIZE_ACCESS_TOKEN_ID,
   secret: process.env.CRYSTALLIZE_ACCESS_TOKEN_SECRET,
@@ -19,15 +19,15 @@ async function graphQLFetcher(graphQLParams) {
       (!TOKEN.id && !TOKEN.secret) ||
       (!TOKEN.id.length && !TOKEN.secret.length)
     ) {
-      throw new Error("You must insert your token ID and Secret");
+      throw new Error('You must insert your token ID and Secret');
     }
 
-    const response = await fetch("https://pim.crystallize.com/graphql", {
-      method: "post",
+    const response = await fetch('https://pim.crystallize.com/graphql', {
+      method: 'post',
       headers: {
-        "Content-Type": "application/json",
-        "X-Crystallize-Access-Token-Id": TOKEN.id,
-        "X-Crystallize-Access-Token-Secret": TOKEN.secret,
+        'Content-Type': 'application/json',
+        'X-Crystallize-Access-Token-Id': TOKEN.id,
+        'X-Crystallize-Access-Token-Secret': TOKEN.secret,
       },
       body: JSON.stringify(graphQLParams),
     });
@@ -40,7 +40,7 @@ async function graphQLFetcher(graphQLParams) {
 
     return json.data;
   } catch (error) {
-    console.error("\n", error, "\n");
+    console.error('\n', error, '\n');
     process.exit();
   }
 }
@@ -77,41 +77,41 @@ async function getTenantInfo({ tenantId }) {
   return data.tenant.get;
 }
 
-async function getTenantBaseInfo() {
+async function getTenantBaseInfo({ skipLanguage = false } = {}) {
   if (!tenantIdentifier) {
     const { tenantIdentifierGiven } = await inquirer.prompt([
       {
-        name: "tenantIdentifierGiven",
+        name: 'tenantIdentifierGiven',
         message: 'Please enter the tenant identifier (e.g. "furniture"):',
       },
     ]);
     tenantIdentifier = tenantIdentifierGiven;
   } else {
-    console.log("Using tenantIdentifier from .env");
+    console.log('Using tenantIdentifier from .env');
   }
 
   if (!TOKEN.id) {
     const { id } = await inquirer.prompt([
       {
-        name: "id",
-        message: "Please enter Access Token ID:",
+        name: 'id',
+        message: 'Please enter Access Token ID:',
       },
     ]);
     TOKEN.id = id;
   } else {
-    console.log("Using Access Token ID from .env");
+    console.log('Using Access Token ID from .env');
   }
 
   if (!TOKEN.secret) {
     const { secret } = await inquirer.prompt([
       {
-        name: "secret",
-        message: "Please enter Access Token Secret:",
+        name: 'secret',
+        message: 'Please enter Access Token Secret:',
       },
     ]);
     TOKEN.secret = secret;
   } else {
-    console.log("Using Access Token Secret from .env");
+    console.log('Using Access Token Secret from .env');
   }
 
   const tenantsMatchingResponse = await graphQLFetcher({
@@ -133,43 +133,45 @@ async function getTenantBaseInfo() {
   });
 
   const matchingTenant = tenantsMatchingResponse.tenant.getMany.find(
-    (t) => t.identifier === tenantIdentifier
+    (t) => t.identifier === tenantIdentifier,
   );
   if (!matchingTenant) {
     throw new Error(
-      `Cannot find a tenant with the identifier "${tenantIdentifier}"`
+      `Cannot find a tenant with the identifier "${tenantIdentifier}"`,
     );
   }
 
   tenantId = matchingTenant.id;
 
   // Determine the language
-  const { availableLanguages } = matchingTenant;
-  if (availableLanguages.length === 1) {
-    language = availableLanguages[0].code;
-  } else {
-    const { languageChoice } = await inquirer.prompt([
-      {
-        type: "list",
-        name: "languageChoice",
-        message: "Select the language target in Crystallize",
-        choices: matchingTenant.availableLanguages.map((lang) => ({
-          name: lang.name,
-          value: lang.code,
-        })),
-      },
-    ]);
-    language = languageChoice;
+  if (!skipLanguage) {
+    const { availableLanguages } = matchingTenant;
+    if (availableLanguages.length === 1) {
+      language = availableLanguages[0].code;
+    } else {
+      const { languageChoice } = await inquirer.prompt([
+        {
+          type: 'list',
+          name: 'languageChoice',
+          message: 'Select the language target in Crystallize',
+          choices: matchingTenant.availableLanguages.map((lang) => ({
+            name: lang.name,
+            value: lang.code,
+          })),
+        },
+      ]);
+      language = languageChoice;
+    }
   }
 
   fs.writeFileSync(
-    "./.env",
+    './.env',
     [
       `CRYSTALLIZE_TENANT_IDENTIFIER=${tenantIdentifier}`,
       `CRYSTALLIZE_ACCESS_TOKEN_ID=${TOKEN.id}`,
       `CRYSTALLIZE_ACCESS_TOKEN_SECRET=${TOKEN.secret}`,
-    ].join("\n"),
-    "utf-8"
+    ].join('\n'),
+    'utf-8',
   );
 
   return { tenantId, language };
@@ -190,7 +192,7 @@ function chunkArray(arr, size) {
 }
 
 async function getShape({ filterShapes, tenantId, language, message }) {
-  const spinner = ora("Getting tenant info").start();
+  const spinner = ora('Getting tenant info').start();
 
   const { shapes, rootItemId } = await getTenantInfo({
     tenantId,
@@ -206,7 +208,7 @@ async function getShape({ filterShapes, tenantId, language, message }) {
 
   if (filteredShapes.length === 0) {
     throw new Error(
-      "You have no available shapes. Please create one at https://pim.crystallize.com/shapes"
+      'You have no available shapes. Please create one at https://pim.crystallize.com/shapes',
     );
   }
 
@@ -215,9 +217,9 @@ async function getShape({ filterShapes, tenantId, language, message }) {
   if (filteredShapes.length > 1) {
     const { shapeChoice } = await inquirer.prompt([
       {
-        type: "list",
-        name: "shapeChoice",
-        message: message || "Please select one of your shapes",
+        type: 'list',
+        name: 'shapeChoice',
+        message: message || 'Please select one of your shapes',
         choices: filteredShapes.map((shape) => ({
           name: shape.name,
           value: shape.id,
