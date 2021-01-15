@@ -8,9 +8,12 @@
     "markdown-import": "node ./markdown-import/index.js"
   },
   "dependencies": {
-    "@crystallize/content-transformer": "^6.0.0",
+    "@crystallize/content-transformer": "^6.1.0",
     "csv-parse": "^4.4.7",
+    "csv-writer": "^1.6.0",
     "dotenv": "^8.2.0",
+    "download": "^8.0.0",
+    "file-type": "^16.2.0",
     "form-data": "^3.0.0",
     "inquirer": "^6.5.1",
     "marked": "^1.1.1",

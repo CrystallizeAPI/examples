@@ -1,0 +1,7 @@
+id,type,sku,name,prices,attributes,stock,images,description
+6000a63eb457e91e4b76fbb1,product,,Lounge Chair,,,,,We wanted to make a chair that is comfortable and practical for modern use. The chair is extra wide so you can curl up and enjoy a hot cup of coffee. It also features an integrated table to place the phone coffee laptop or a magazine. 
+6000a63eb457e93dff76fbaf,variant,lounge-chair-big,Big,default=99;sale=69;,size=big;,99,https://media-dev.crystallize.digital/test4-stavros/21/1/14/13/loung-chair-blue.png;https://media-dev.crystallize.digital/test4-stavros/21/1/14/13/loung-chair-green.png;,
+6000a63eb457e917d676fbb0,variant,lounge-chair-regular,Small,default=79;,size=regular;color=green;,199,https://media-dev.crystallize.digital/test4-stavros/21/1/14/14/loung-chair-blue.png;,
+6000a63fb457e9293476fbb5,product,,Modern Portrait,,,,,A beautiful portait with one of the most beatiful creatures of this planet
+6000a63fb457e9336676fbb3,variant,moder-portrait-big,Flamingo Figure,default=69;sale=59;,size=big;color=blue;,61,https://media-dev.crystallize.digital/test4-stavros/21/1/14/15/flamingo-portrait.jpeg;,
+6000a63fb457e92ccb76fbb4,variant,moder-portrait-regular,Flamingo Figure,default=59;sale=49;,size=regular;color=green;,89,https://media-dev.crystallize.digital/test4-stavros/21/1/14/16/flamingo-portrait.jpeg;,
