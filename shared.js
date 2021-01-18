@@ -22,18 +22,21 @@ async function graphQLFetcher(graphQLParams) {
       throw new Error('You must insert your token ID and Secret');
     }
 
-    const response = await fetch('https://pim.crystallize.com/graphql', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Crystallize-Access-Token-Id': TOKEN.id,
-        'X-Crystallize-Access-Token-Secret': TOKEN.secret,
+    const response = await fetch(
+      'https://pim-dev.crystallize.digital/graphql',
+      {
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Crystallize-Access-Token-Id': TOKEN.id,
+          'X-Crystallize-Access-Token-Secret': TOKEN.secret,
+        },
+        body: JSON.stringify(graphQLParams),
       },
-      body: JSON.stringify(graphQLParams),
-    });
+    );
 
     const json = await response.json();
-
+    console.log(json.data);
     if (!json.data) {
       throw new Error(JSON.stringify(json, null, 2));
     }
