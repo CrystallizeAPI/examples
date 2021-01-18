@@ -62,7 +62,7 @@ module.exports = async function writeCSV(products, fileName) {
       ],
     });
 
-    for (const product of products) {
+    products.forEach((product) => {
       records.push({
         id: product.id,
         type: 'product',
@@ -91,13 +91,12 @@ module.exports = async function writeCSV(products, fileName) {
         };
       });
       records = records.concat(variants);
-    }
+    });
 
     await csvWriter.writeRecords(records);
 
     return Promise.resolve({ success: true });
   } catch (error) {
-    console.log('DDDD ', error);
     return Promise.reject({ success: false, error });
   }
 };
