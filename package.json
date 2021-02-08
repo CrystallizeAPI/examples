@@ -16,7 +16,7 @@
     "file-type": "^16.2.0",
     "form-data": "^3.0.0",
     "inquirer": "^6.5.1",
-    "marked": "^1.1.1",
+    "marked": "^2.0.0",
     "node-fetch": "2.6.1",
     "ora": "^3.4.0",
     "progress": "^2.0.3",
