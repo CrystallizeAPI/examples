@@ -5,7 +5,8 @@
   "scripts": {
     "products-import-from-csv": "node ./products-import-from-csv/index.js",
     "html-import": "node ./html-import/index.js",
-    "markdown-import": "node ./markdown-import/index.js"
+    "markdown-import": "node ./markdown-import/index.js",
+    "product-variant-update-stock": "node ./product-variant-update-stock"
   },
   "dependencies": {
     "@crystallize/content-transformer": "^6.1.0",
