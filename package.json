@@ -5,7 +5,7 @@
   "scripts": {
     "products-import-from-csv": "node ./products-import-from-csv/index.js",
     "html-import": "node ./html-import/index.js",
-    "markdown-import": "node ./markdown-import/index.js",
+    "markdown-import": "echo \"Navigate into the markdown-import folder and run npm run start\"",
     "product-variant-update-stock": "node ./product-variant-update-stock"
   },
   "dependencies": {
@@ -17,7 +17,6 @@
     "file-type": "^16.2.0",
     "form-data": "^3.0.0",
     "inquirer": "^6.5.1",
-    "marked": "^1.1.1",
     "node-fetch": "2.6.1",
     "ora": "^3.4.0",
     "progress": "^2.0.3",

@@ -6,7 +6,12 @@ You will need an access token, in order to be able to run this script. It can be
 
 Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize.com/settings/tenant)
 
-1. download the repo
-2. install dependencies `npm install`
-3. run `npm run markdown-import`
-4. follow command line instructions
+This script creates an item with a [rich text](https://crystallize.com/learn/concepts/pim/component/rich-text) component which markdown will be imported into.
+
+- Creates a new shape, `example-markdown-import`
+- Creates a new item based on the shape, "Example item with markdown import"
+
+## Usage
+
+1. Install dependencies
+2. `yarn start` or `npm run start`
