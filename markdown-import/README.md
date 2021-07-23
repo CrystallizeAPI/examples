@@ -4,8 +4,6 @@ This script imports generic markdown information into your Crystallize [PIM](htt
 
 You will need an access token, in order to be able to run this script. It can be obtained under settings menu on [Access Tokens](https://pim.crystallize.com/settings/access-tokens)
 
-Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize.com/settings/tenant)
-
 This script creates an item with a [rich text](https://crystallize.com/learn/concepts/pim/component/rich-text) component which markdown will be imported into.
 
 - Creates a new shape, `example-markdown-import`
