@@ -6,6 +6,12 @@ You will need an access token, in order to be able to run this script. It can be
 
 Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize.com/settings/tenant)
 
-1. download the repo
-2. install dependencies `npm install`
-3. run `npm run product-variant-update-stock`
+## What this script does
+
+- Creates a new shape, `example-update-stock`
+- Creates a new product based on the shape, "Example product with stock update"
+
+## Usage
+
+1. Install dependencies
+2. `yarn start` or `npm run start`
