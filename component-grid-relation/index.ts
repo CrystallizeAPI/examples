@@ -35,6 +35,22 @@ const tenantSpec: JsonSpec = {
             {
               layout: {
                 rowspan: 1,
+                colspan: 2,
+              },
+            },
+          ],
+        },
+        {
+          columns: [
+            {
+              layout: {
+                rowspan: 1,
+                colspan: 1,
+              },
+            },
+            {
+              layout: {
+                rowspan: 1,
                 colspan: 1,
               },
             },
