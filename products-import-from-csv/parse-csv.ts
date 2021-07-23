@@ -83,6 +83,11 @@ function getProductsFromRows(rows: any[]): any[] {
       stock: parseInt(row[keys.stock], 10),
       attributes: parseAttributes(row[keys.attributes]),
       isDefault: product.variants.length === 0,
+      images: [
+        {
+          src: row[keys.image],
+        },
+      ],
     });
   }
 

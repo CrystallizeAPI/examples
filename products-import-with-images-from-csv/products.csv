@@ -1,7 +1,0 @@
-id,type,sku,name,prices,attributes,stock,images
-1,product,,Lounge Chair,,,,
-2,variant,lounge-chair-big,Big,default=99;sale=69,size=big,99,https://media.crystallize.com/furniture/20/11/9/2/@1366/loung-chair-blue.png;https://media.crystallize.com/furniture/20/11/9/3/@1366/loung-chair-green.png
-3,variant,lounge-chair-regular,Small,default=79,size=regular;color=green,199,https://media.crystallize.com/furniture/20/11/9/2/@1366/loung-chair-blue.png
-4,product,,Modern Portrait toy,,,,
-5,variant,moder-portrait-big,Flamingo Figure,default=69;sale=59,size=big;color=blue,61,https://media.crystallize.com/furniture/20/8/12/4/@1366/flamingo-portrait.jpeg
-6,variant,moder-portrait-regular,Flamingo Figure,default=59;sale=49,size=regular;color=green,89,https://media.crystallize.com/furniture/20/8/12/4/@1366/flamingo-portrait.jpeg

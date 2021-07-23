@@ -1,7 +1,7 @@
-id,type,sku,name,price,attributes,stock
-1,product,,Teddy bear,,,
-2,variant,teddy-bear-big,Big,99,size=big,99
-3,variant,teddy-bear-regular,Small,79,size=regular;color=red,199
-4,product,,Dinosaur toy,,,
-5,variant,dino-toy-rex-big,Tyrannosaurus Rex,69,size=big;color=blue,61
-6,variant,dino-toy-rex-regular,Tyrannosaurus Rex,59,size=regular;color=green,89
+id,type,sku,name,price,attributes,stock,image
+1,product,,Teddy bear,,,,
+2,variant,teddy-bear-big,Big,99,size=big,99,https://images.unsplash.com/photo-1583931402177-a6eee4794457?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGVkZHklMjBiZWFyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60
+3,variant,teddy-bear-regular,Small,79,size=regular;color=red,199,https://images.unsplash.com/photo-1556012018-50c5c0da73bf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVkZHklMjBiZWFyJTIwcmVkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60
+4,product,,Dinosaur toy,,,,
+5,variant,dino-toy-rex-big,Tyrannosaurus Rex,69,size=big;color=blue,61,https://images.unsplash.com/photo-1589766032855-b8f8439dbade?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHR5cmFubm9zYXVydXMlMjByZXh8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60
+6,variant,dino-toy-rex-regular,Tyrannosaurus Rex,59,size=regular;color=green,89,https://images.unsplash.com/photo-1469004243181-2a4364487fbf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHR5cmFubm9zYXVydXMlMjByZXh8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60
