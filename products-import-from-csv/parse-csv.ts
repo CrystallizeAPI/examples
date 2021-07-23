@@ -1,19 +1,16 @@
-const fs = require('fs');
-const util = require('util');
-const csvParse = require('csv-parse');
+import fs from 'fs/promises';
+import csvParse from 'csv-parse';
 
-const readFileAsync = util.promisify(fs.readFile);
-
-function getRows(csv) {
+function getRows(csv: any): Promise<any[]> {
   return new Promise((resolve, reject) => {
     const parser = csvParse({
       delimiter: ',',
     });
 
-    const rows = [];
+    const rows: any[] = [];
 
     parser.on('readable', () => {
-      let record;
+      let record: any;
       // eslint-disable-next-line
       while ((record = parser.read())) {
         rows.push(record);
@@ -36,28 +33,30 @@ function getRows(csv) {
   });
 }
 
-function parseAttributes(attributesString) {
+function parseAttributes(attributesString: any) {
   const parts = attributesString.split(';');
-  return parts.map((part) => {
+  const attrObj: Record<string, string> = {};
+  parts.forEach((part: any) => {
     const [attribute, value] = part.split('=');
-    return { attribute, value };
+    attrObj[attribute] = value;
   });
+  return attrObj;
 }
 
-function getProductsFromRows(rows) {
+function getProductsFromRows(rows: any[]): any[] {
   // Extract the header row
   const [header, ...rest] = rows;
 
   // Create an reference to keys as key=index
   const keys = header.reduce(
-    (acc, val, index) => ({
+    (acc: any, val: any, index: number) => ({
       ...acc,
       [header[index]]: index,
     }),
     {},
   );
 
-  const products = [];
+  const products: any[] = [];
 
   rest.forEach((row) => {
     if (row[keys.type] === 'product') {
@@ -67,20 +66,20 @@ function getProductsFromRows(rows) {
     }
   });
 
-  function handleProduct(row) {
+  function handleProduct(row: any) {
     products.push({
       name: row[keys.name],
       variants: [],
     });
   }
 
-  function handleVariant(row) {
+  function handleVariant(row: any) {
     const product = products[products.length - 1];
 
     product.variants.push({
       name: row[keys.name],
       sku: row[keys.sku],
-      price: parseFloat(row[keys.price], 10),
+      price: parseFloat(row[keys.price]),
       stock: parseInt(row[keys.stock], 10),
       attributes: parseAttributes(row[keys.attributes]),
       isDefault: product.variants.length === 0,
@@ -90,16 +89,10 @@ function getProductsFromRows(rows) {
   return products;
 }
 
-module.exports = async function parseCSV(path) {
-  try {
-    const csv = await readFileAsync(__dirname + path, 'utf-8');
+export async function getProductsFromCSV(): Promise<any[]> {
+  const csv = await fs.readFile(__dirname + '/products.csv', 'utf-8');
 
-    const rows = await getRows(csv);
+  const rows = await getRows(csv);
 
-    const products = getProductsFromRows(rows);
-
-    return { success: true, products };
-  } catch (error) {
-    return { success: false, error };
-  }
-};
+  return getProductsFromRows(rows);
+}

@@ -4,13 +4,15 @@ This script imports product information from a CSV file into your Crystallize [P
 
 You will need an access token, in order to be able to run this script. It can be obtained under settings menu on [Access Tokens](https://pim.crystallize.com/settings/access-tokens)
 
-Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize.com/settings/tenant)
+## The script will
 
-1. download the repo
-2. install dependencies `npm install`
-3. follow the same CSV structure as `products.csv`
-4. copy your products to `products.csv` file or replace the file
-5. run `npm run products-import-from-csv`
-6. follow command line instructions
+- Creates two new shapes, `example-csv-imp-folder` and `example-csv-imp-product`
+- Creates a new folder for all the products, "Example products CSV import"
+- Creates new products under that folder
+
+## Usage
+
+1. Install dependencies
+2. `yarn start` or `npm run start`
 
 You can also read the blog post on [CSV product import to PIM](https://crystallize.com/blog/csv-product-import-into-pim)
