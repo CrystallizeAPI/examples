@@ -4,9 +4,12 @@ This script imports generic HTML information into your Crystallize [PIM](https:/
 
 You will need an access token, in order to be able to run this script. It can be obtained under settings menu on [Access Tokens](https://pim.crystallize.com/settings/access-tokens)
 
-Tenant ID can also be found under settings menu [Tenant](https://pim.crystallize.com/settings/tenant)
+## The script will
 
-1. download the repo
-2. install dependencies `npm install`
-3. run `npm run html-import`
-4. follow command line instructions
+- Creates a new shape, `example-html-import`
+- Creates a new item based on the shape, "Example item with html import"
+
+## Usage
+
+1. Install dependencies
+2. `yarn start` or `npm run start`
