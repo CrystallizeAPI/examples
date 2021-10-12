@@ -2,43 +2,41 @@ import {
   Bootstrapper,
   EVENT_NAMES,
   JsonSpec,
-} from '@crystallize/import-utilities';
-// @ts-ignore
-import fromHTML from '@crystallize/content-transformer/fromHTML';
+} from "@crystallize/import-utilities";
 
 const tenantSpec: JsonSpec = {
   languages: [
     {
-      code: 'en',
-      name: 'English',
+      code: "en",
+      name: "English",
       isDefault: true,
     },
   ],
   shapes: [
     {
-      identifier: 'example-html-import',
-      name: 'Example html import',
-      type: 'document',
+      identifier: "example-html-import",
+      name: "Example html import",
+      type: "document",
       components: [
         {
-          id: 'a-rich-text',
-          name: 'Rich text',
-          type: 'richText',
+          id: "a-rich-text",
+          name: "Rich text",
+          type: "richText",
         },
       ],
     },
   ],
   items: [
     {
-      name: 'Example item with html import',
-      shape: 'example-html-import',
+      name: "Example item with html import",
+      shape: "example-html-import",
       components: {
-        'a-rich-text': {
-          json: fromHTML(`
+        "a-rich-text": {
+          html: `
             <p>
               Hello there. Let's get this
               into a well structured <a href="https://crystallize.com/learn/concepts/pim/component/rich-text">Rich Text Component</a>.
-            </p>`),
+            </p>`,
         },
       },
     },
@@ -57,7 +55,7 @@ async function go() {
 
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
-  bootstrapper.setTenantIdentifier('<your-tenant-identifier-here>');
+  bootstrapper.setTenantIdentifier("<your-tenant-identifier-here>");
 
   // bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
   //   console.log(JSON.stringify(status, null, 1));
@@ -65,7 +63,7 @@ async function go() {
 
   bootstrapper.on(EVENT_NAMES.DONE, (status) => {
     console.log(
-      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`,
+      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`
     );
     process.exit(0);
   });
