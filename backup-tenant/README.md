@@ -1,4 +1,4 @@
-## Duplicate one tenant into another tenant
+## Backup tenant (create JSON spec)
 
 This script creates a JSON spec for a Crystallize [PIM](https://crystallize.com/product/product-information-management) tenant, storing it on disk as a JSON backup. This backup
 file can later be used to [bootstrap a different tenant](https://github.com/CrystallizeAPI/examples/tree/main/duplicate-tenant).
