@@ -6,8 +6,8 @@ You will need an access token, in order to be able to run this script. It can be
 
 ## The script will
 
-- Creates a JSON spec for tenant A
-- Imports the JSON spec for tenant B
+- Create a JSON spec for source tenant
+- Import the JSON spec for target tenant
 
 ## Usage
 
