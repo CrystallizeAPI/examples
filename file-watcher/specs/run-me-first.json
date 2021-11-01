@@ -1,0 +1,33 @@
+{
+  "languages": [
+    {
+      "code": "en",
+      "name": "English",
+      "isDefault": true
+    }
+  ],
+  "shapes": [
+    {
+      "identifier": "example-file-watcher",
+      "name": "Example file watcher",
+      "type": "document",
+      "components": [
+        {
+          "id": "a-single-line",
+          "name": "Single line",
+          "type": "singleLine"
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "name": "Example from run-me-first.json",
+      "externalReference": "example-from-run-me-first-json",
+      "shape": "example-single-line",
+      "components": {
+        "a-single-line": "Hello from first file"
+      }
+    }
+  ]
+}
