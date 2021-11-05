@@ -73,7 +73,10 @@ function runSpec(specPath: string): Promise<void> {
        * Create a log entry if there are warnings
        */
       if (warnings.length > 1) {
-        const folderName = `${__dirname}/logs/log-${Date.now()}`;
+        const specParts = specPath.split("/");
+        const folderName = `${__dirname}/logs/${
+          specParts[specParts.length - 1]
+        }-${Date.now()}`;
         await fs.mkdir(folderName);
         await fs.writeFile(
           `${folderName}/spec.json`,
