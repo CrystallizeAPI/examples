@@ -8,26 +8,16 @@
   ],
   "shapes": [
     {
-      "identifier": "example-file-watcher",
-      "name": "Example file watcher",
-      "type": "document",
-      "components": [
-        {
-          "id": "a-single-line",
-          "name": "Single line",
-          "type": "singleLine"
-        }
-      ]
+      "identifier": "prod",
+      "name": "Example prod",
+      "type": "product"
     }
   ],
   "items": [
     {
-      "name": "Example from run-me-first.json",
-      "externalReference": "example-from-run-me-first-json",
-      "shape": "example-single-line",
-      "components": {
-        "a-single-line": "Hello from first file"
-      }
+      "name": "Prod",
+      "externalReference": "prod",
+      "shape": "prod"
     }
   ]
 }
