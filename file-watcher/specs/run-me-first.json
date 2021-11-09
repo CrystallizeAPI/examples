@@ -8,16 +8,23 @@
   ],
   "shapes": [
     {
-      "identifier": "prod",
-      "name": "Example prod",
-      "type": "product"
+      "identifier": "doc",
+      "name": "Example document",
+      "type": "document",
+      "components": [
+        {
+          "name": "Single line",
+          "id": "a-single-line",
+          "type": "singleLine"
+        }
+      ]
     }
   ],
   "items": [
     {
-      "name": "Prod",
-      "externalReference": "prod",
-      "shape": "prod"
+      "name": "Example from run-me-first.json",
+      "externalReference": "run-me-first-document",
+      "shape": "doc"
     }
   ]
 }
