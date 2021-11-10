@@ -16,7 +16,7 @@ async function createSpec() {
 
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
-  bootstrapper.setTenantIdentifier("<source-tenant-identifier>");
+  bootstrapper.setTenantIdentifier("<tenant-a-identifier>");
 
   return bootstrapper.createSpec({
     grids: true,
@@ -26,6 +26,7 @@ async function createSpec() {
     shapes: true,
     topicMaps: true,
     vatTypes: true,
+    stockLocations: true,
     onUpdate: (areaUpdate) => {
       console.log(areaUpdate.message);
     },
@@ -45,7 +46,7 @@ function importToTenant(spec: JsonSpec): Promise<void> {
 
     bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
-    bootstrapper.setTenantIdentifier("<target-tenant-identifier>");
+    bootstrapper.setTenantIdentifier("<tenant-b-identifier>");
 
     bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
       console.log(JSON.stringify(status, null, 1));

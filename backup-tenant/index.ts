@@ -23,6 +23,7 @@ async function backupTenant() {
     shapes: true,
     topicMaps: true,
     vatTypes: true,
+    stockLocations: true,
     onUpdate: (areaUpdate) => {
       console.log(areaUpdate.message);
     },
