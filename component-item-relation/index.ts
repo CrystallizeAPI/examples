@@ -2,46 +2,46 @@ import {
   Bootstrapper,
   EVENT_NAMES,
   JsonSpec,
-} from '@crystallize/import-utilities';
+} from "@crystallize/import-utilities";
 
 const tenantSpec: JsonSpec = {
   languages: [
     {
-      code: 'en',
-      name: 'English',
+      code: "en",
+      name: "English",
       isDefault: true,
     },
   ],
   shapes: [
     {
-      identifier: 'example-item-relation',
-      name: 'Example item relation',
-      type: 'document',
+      identifier: "example-item-relation",
+      name: "Example item relation",
+      type: "document",
       components: [
         {
-          id: 'an-item-relation',
-          name: 'An item relation',
-          type: 'itemRelations',
+          id: "an-item-relation",
+          name: "An item relation",
+          type: "itemRelations",
         },
       ],
     },
   ],
   items: [
     {
-      name: 'Example item with item relation',
-      shape: 'example-item-relation',
+      name: "Example item with item relation",
+      shape: "example-item-relation",
       components: {
-        'an-item-relation': [
+        "an-item-relation": [
           {
-            externalReference: '12345678',
+            externalReference: "12345678",
           },
         ],
       },
     },
     {
-      name: 'Example item with external reference',
-      shape: 'example-item-relation',
-      externalReference: '12345678',
+      name: "Example item with external reference",
+      shape: "example-item-relation",
+      externalReference: "12345678",
     },
   ],
 };
@@ -59,15 +59,15 @@ async function go() {
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
   // bootstrapper.setTenantIdentifier('<your-tenant-identifier-here>');
-  bootstrapper.setTenantIdentifier('hkn-examples');
+  bootstrapper.setTenantIdentifier("hkn-examples");
 
-  // bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
-  //   console.log(JSON.stringify(status, null, 1));
-  // });
+  bootstrapper.on(EVENT_NAMES.ERROR, (status) => {
+    console.log(JSON.stringify(status, null, 1));
+  });
 
   bootstrapper.on(EVENT_NAMES.DONE, (status) => {
     console.log(
-      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`,
+      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`
     );
     process.exit(0);
   });
