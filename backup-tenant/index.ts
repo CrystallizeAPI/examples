@@ -15,19 +15,7 @@ async function backupTenant() {
 
   bootstrapper.setTenantIdentifier("<tenant-identifier>");
 
-  const spec = await bootstrapper.createSpec({
-    grids: true,
-    items: true,
-    languages: true,
-    priceVariants: true,
-    shapes: true,
-    topicMaps: true,
-    vatTypes: true,
-    stockLocations: true,
-    onUpdate: (areaUpdate) => {
-      console.log(areaUpdate.message);
-    },
-  });
+  const spec = await bootstrapper.createSpec();
 
   await fs.writeFile(
     `${__dirname}/backup-${bootstrapper.tenantIdentifier}-${Date.now()}.json`,
