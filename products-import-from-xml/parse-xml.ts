@@ -1,37 +1,5 @@
 import fs from "fs/promises";
-import csvParse from "csv-parse";
-
-function getRows(csv: any): Promise<any[]> {
-  return new Promise((resolve, reject) => {
-    const parser = csvParse({
-      delimiter: ",",
-    });
-
-    const rows: any[] = [];
-
-    parser.on("readable", () => {
-      let record: any;
-      // eslint-disable-next-line
-      while ((record = parser.read())) {
-        rows.push(record);
-      }
-    });
-
-    parser.on("error", (error) => {
-      reject({
-        message: "Could not parse CSV",
-        error,
-      });
-    });
-
-    parser.on("end", () => resolve(rows));
-
-    // Pass in the csv input
-    parser.write(csv);
-
-    parser.end();
-  });
-}
+import { XMLParser } from "fast-xml-parser";
 
 function parseAttributes(attributesString: any) {
   const parts = attributesString.split(";");
@@ -94,10 +62,11 @@ function getProductsFromRows(rows: any[]): any[] {
   return products;
 }
 
-export async function getProductsFromCSV(): Promise<any[]> {
-  const csv = await fs.readFile(__dirname + "/products.csv", "utf-8");
+export async function getProductsFromXML(): Promise<any[]> {
+  const xml = await fs.readFile(__dirname + "/products.xml", "utf-8");
 
-  const rows = await getRows(csv);
+  const parser = new XMLParser();
+  const obj = parser.parse(xml);
 
-  return getProductsFromRows(rows);
+  return getProductsFromRows(obj.root.row.map((r: any) => r.item));
 }

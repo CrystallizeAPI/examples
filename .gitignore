@@ -64,3 +64,6 @@ typings/
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
+
+# OS files
+.DS_STORE

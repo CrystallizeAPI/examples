@@ -1,5 +1,5 @@
 {
-  "name": "products-csv-import",
+  "name": "products-xml-import",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -13,6 +13,7 @@
     "@types/node": "^16.3.3",
     "csv-parse": "^4.16.0",
     "dotenv": "^10.0.0",
+    "fast-xml-parser": "^4.0.0-beta.8",
     "ts-node": "^10.1.0",
     "typescript": "^4.3.5"
   }

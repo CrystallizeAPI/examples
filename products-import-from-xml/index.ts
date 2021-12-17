@@ -6,10 +6,10 @@ import {
   EVENT_NAMES,
   JsonSpec,
 } from "@crystallize/import-utilities";
-import { getProductsFromCSV } from "./parse-csv";
+import { getProductsFromXML } from "./parse-xml";
 
 async function go() {
-  const products = await getProductsFromCSV();
+  const products = await getProductsFromXML();
 
   const tenantSpec: JsonSpec = {
     languages: [
@@ -21,14 +21,14 @@ async function go() {
     ],
     shapes: [
       {
-        identifier: "example-csv-imp-folder",
-        name: "Example CSV import folder",
+        identifier: "example-xml-imp-folder",
+        name: "Example XML import folder",
         type: "folder",
         components: [],
       },
       {
-        identifier: "example-csv-imp-product",
-        name: "Example CSV import product",
+        identifier: "example-xml-imp-product",
+        name: "Example XML import product",
         type: "product",
         components: [],
       },
@@ -41,8 +41,8 @@ async function go() {
     ],
     items: [
       {
-        name: "Example products CSV import",
-        shape: "example-csv-imp-folder",
+        name: "Example products XML import",
+        shape: "example-xml-imp-folder",
         children: products.map((product: any) => ({
           ...product,
           shape: "example-csv-imp-product",
@@ -64,7 +64,7 @@ async function go() {
 
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
-  bootstrapper.setTenantIdentifier("<your-tenant-identifier>");
+  bootstrapper.setTenantIdentifier("<your-tenant-identifier-here>");
 
   // bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
   //   console.log(JSON.stringify(status, null, 1));

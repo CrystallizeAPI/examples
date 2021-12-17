@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <row>
+    <item>type</item>
+    <item>sku</item>
+    <item>name</item>
+    <item>price</item>
+    <item>attributes</item>
+    <item>stock</item>
+    <item>image</item>
+  </row>
+  <row>
+    <item>product</item>
+    <item></item>
+    <item>Teddy bear from XML</item>
+    <item></item>
+    <item></item>
+    <item></item>
+    <item></item>
+  </row>
+  <row>
+    <item>variant</item>
+    <item>teddy-bear-big-from-xml</item>
+    <item>Big</item>
+    <item>99</item>
+    <item>size=big</item>
+    <item>99</item>
+    <item>https://images.unsplash.com/photo-1583931402177-a6eee4794457?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dGVkZHklMjBiZWFyfGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60</item>
+  </row>
+  <row>
+    <item>variant</item>
+    <item>teddy-bear-regular-from-xml</item>
+    <item>Small</item>
+    <item>79</item>
+    <item>size=regular;color=red</item>
+    <item>199</item>
+    <item>https://images.unsplash.com/photo-1556012018-50c5c0da73bf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dGVkZHklMjBiZWFyJTIwcmVkfGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60</item>
+  </row>
+  <row>
+    <item>product</item>
+    <item></item>
+    <item>Dinosaur toy</item>
+    <item></item>
+    <item></item>
+    <item></item>
+    <item></item>
+  </row>
+  <row>
+    <item>variant</item>
+    <item>dino-toy-rex-big-from-xml</item>
+    <item>Tyrannosaurus Rex</item>
+    <item>69</item>
+    <item>size=big;color=blue</item>
+    <item>61</item>
+    <item>https://images.unsplash.com/photo-1589766032855-b8f8439dbade?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fHR5cmFubm9zYXVydXMlMjByZXh8ZW58MHx8MHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60</item>
+  </row>
+  <row>
+    <item>variant</item>
+    <item>dino-toy-rex-regular-from-xml</item>
+    <item>Tyrannosaurus Rex</item>
+    <item>59</item>
+    <item>size=regular;color=green</item>
+    <item>89</item>
+    <item>https://images.unsplash.com/photo-1469004243181-2a4364487fbf?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHR5cmFubm9zYXVydXMlMjByZXh8ZW58MHx8MHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60</item>
+  </row>
+</root>
