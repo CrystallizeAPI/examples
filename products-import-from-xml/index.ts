@@ -45,7 +45,7 @@ async function go() {
         shape: "example-xml-imp-folder",
         children: products.map((product: any) => ({
           ...product,
-          shape: "example-csv-imp-product",
+          shape: "example-xml-imp-product",
           vatType: "Example VAT",
         })),
       },
