@@ -40,11 +40,13 @@ async function go() {
       {
         name: "Example products import",
         shape: "example-product-folder",
+        externalReference: "example-product-folder", // Create or update folder if it exists
         children: [
           {
             name: "Example product 1",
             shape: "example-product",
             vatType: "Example VAT",
+            externalReference: "example-product-folder-product-1", // Create or update product if it exists
             variants: [
               {
                 name: "Example variant",
@@ -67,6 +69,7 @@ async function go() {
             name: "Example product 2",
             shape: "example-product",
             vatType: "Example VAT",
+            externalReference: "example-product-folder-product-2", // Create or update product if it exists
             variants: [
               {
                 name: "Example variant",
