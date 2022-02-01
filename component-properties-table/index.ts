@@ -2,31 +2,31 @@ import {
   Bootstrapper,
   EVENT_NAMES,
   JsonSpec,
-} from '@crystallize/import-utilities';
+} from "@crystallize/import-utilities";
 
 const tenantSpec: JsonSpec = {
   languages: [
     {
-      code: 'en',
-      name: 'English',
+      code: "en",
+      name: "English",
       isDefault: true,
     },
   ],
   shapes: [
     {
-      identifier: 'example-properties-table',
-      name: 'Example properties table',
-      type: 'document',
+      identifier: "example-properties-table",
+      name: "Example properties table",
+      type: "document",
       components: [
         {
-          id: 'a-properties-table',
-          name: 'A properties table',
-          type: 'propertiesTable',
+          id: "a-properties-table",
+          name: "A properties table",
+          type: "propertiesTable",
           config: {
             sections: [
               {
-                title: 'Dimensions',
-                keys: ['width', 'height'],
+                title: "Dimensions",
+                keys: ["width", "height"],
               },
             ],
           },
@@ -36,15 +36,15 @@ const tenantSpec: JsonSpec = {
   ],
   items: [
     {
-      name: 'Example item with properties table',
-      shape: 'example-properties-table',
+      name: "Example item with properties table",
+      shape: "example-properties-table",
       components: {
-        'a-properties-table': [
+        "a-properties-table": [
           {
-            title: 'Dimensions',
+            title: "Dimensions",
             properties: {
-              width: '5',
-              height: '50',
+              width: "5",
+              height: "50",
             },
           },
         ],
@@ -66,7 +66,7 @@ async function go() {
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
   // bootstrapper.setTenantIdentifier('<your-tenant-identifier-here>');
-  bootstrapper.setTenantIdentifier('hkn-examples');
+  bootstrapper.setTenantIdentifier("<your-tenant-identifier-here>");
 
   // bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
   //   console.log(JSON.stringify(status, null, 1));
@@ -74,7 +74,7 @@ async function go() {
 
   bootstrapper.on(EVENT_NAMES.DONE, (status) => {
     console.log(
-      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`,
+      `Bootstrapped "${bootstrapper.tenantIdentifier}" in ${status.duration}`
     );
     process.exit(0);
   });

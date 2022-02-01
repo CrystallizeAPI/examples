@@ -104,7 +104,7 @@ async function go() {
 
   bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
 
-  bootstrapper.setTenantIdentifier("hkn-examples");
+  bootstrapper.setTenantIdentifier("<your-tenant-identifier-here>");
 
   // bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
   //   console.log(JSON.stringify(status, null, 1));
