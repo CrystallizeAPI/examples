@@ -1,8 +1,8 @@
 ## Duplicate one tenant into another tenant
 
-This script creates a JSON spec for a Crystallize [PIM](https://crystallize.com/product/product-information-management) tenant, and then imports that spec to another tenant. product information from a CSV file into your
+This script creates a JSON spec for a Crystallize [PIM](https://crystallize.com/product/product-information-management) tenant, and then imports that spec to another tenant.
 
-You will need an access token, in order to be able to run this script. It can be obtained under settings menu on [Access Tokens](https://pim.crystallize.com/settings/access-tokens)
+You will need an access token pair to run this script. You can generate one within Crystallize's [Access Tokens](https://pim.crystallize.com/settings/access-tokens) settings.
 
 ## The script will
 
@@ -12,4 +12,5 @@ You will need an access token, in order to be able to run this script. It can be
 ## Usage
 
 1. Install dependencies
-2. `yarn start` or `npm run start`
+2. Copy `.env.sample` to `.env` and fill in your environment variables
+3. `yarn start` or `npm run start`

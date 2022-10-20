@@ -1,23 +1,43 @@
-require('dotenv').config()
+import "dotenv/config";
 import {
   Bootstrapper,
   EVENT_NAMES,
   JsonSpec,
 } from "@crystallize/import-utilities";
 
+/**
+ * Access tokens for the account used
+ * https://crystallize.com/learn/developer-guides/access-tokens
+ */
+const {
+  CRYSTALLIZE_ACCESS_TOKEN_ID,
+  CRYSTALLIZE_ACCESS_TOKEN_SECRET,
+  SOURCE_TENANT_IDENTIFIER,
+  TARGET_TENANT_IDENTIFIER,
+} = process.env;
+if (!CRYSTALLIZE_ACCESS_TOKEN_ID || !CRYSTALLIZE_ACCESS_TOKEN_SECRET) {
+  console.error(
+    "Missing CRYSTALLIZE_ACCESS_TOKEN_ID and CRYSTALLIZE_ACCESS_TOKEN_SECRET"
+  );
+  process.exit(1);
+}
+if (!SOURCE_TENANT_IDENTIFIER) {
+  console.error("Missing SOURCE_TENANT_IDENTIFIER");
+  process.exit(1);
+}
+if (!TARGET_TENANT_IDENTIFIER) {
+  console.error("Missing TARGET_TENANT_IDENTIFIER");
+  process.exit(1);
+}
+
 async function createSpec() {
   const bootstrapper = new Bootstrapper();
 
-  /**
-   * Access tokens for the account used
-   * https://crystallize.com/learn/developer-guides/access-tokens
-   */
-  const ACCESS_TOKEN_ID = process.env.CRYSTALLIZE_ACCESS_TOKEN_ID ?? '';
-  const ACCESS_TOKEN_SECRET = process.env.CRYSTALLIZE_ACCESS_TOKEN_SECRET ?? '';
-  const SOURCE_TENANT_IDENTIFIER = process.env.SOURCE_TENANT_IDENTIFIER ?? '';
-
-  bootstrapper.setTenantIdentifier(SOURCE_TENANT_IDENTIFIER);
-  bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
+  bootstrapper.setTenantIdentifier(SOURCE_TENANT_IDENTIFIER as string);
+  bootstrapper.setAccessToken(
+    CRYSTALLIZE_ACCESS_TOKEN_ID as string,
+    CRYSTALLIZE_ACCESS_TOKEN_SECRET as string
+  );
 
   return bootstrapper.createSpec();
 }
@@ -26,16 +46,11 @@ function importToTenant(spec: JsonSpec): Promise<void> {
   return new Promise((resolve) => {
     const bootstrapper = new Bootstrapper();
 
-    /**
-     * Access tokens for the account used
-     * https://crystallize.com/learn/developer-guides/access-tokens
-     */
-    const ACCESS_TOKEN_ID = process.env.CRYSTALLIZE_ACCESS_TOKEN_ID ?? '';
-    const ACCESS_TOKEN_SECRET = process.env.CRYSTALLIZE_ACCESS_TOKEN_SECRET ?? '';
-    const TARGET_TENANT_IDENTIFIER = process.env.TARGET_TENANT_IDENTIFIER ?? '';
-
-    bootstrapper.setTenantIdentifier(TARGET_TENANT_IDENTIFIER);
-    bootstrapper.setAccessToken(ACCESS_TOKEN_ID, ACCESS_TOKEN_SECRET);
+    bootstrapper.setTenantIdentifier(TARGET_TENANT_IDENTIFIER as string);
+    bootstrapper.setAccessToken(
+      CRYSTALLIZE_ACCESS_TOKEN_ID as string,
+      CRYSTALLIZE_ACCESS_TOKEN_SECRET as string
+    );
 
     bootstrapper.on(EVENT_NAMES.STATUS_UPDATE, (status) => {
       console.log(JSON.stringify(status, null, 1));
@@ -49,16 +64,13 @@ function importToTenant(spec: JsonSpec): Promise<void> {
     });
 
     bootstrapper.setSpec(spec);
-
     bootstrapper.start();
   });
 }
 
 async function go() {
   const spec = await createSpec();
-
   await importToTenant(spec);
-
   process.exit(0);
 }
 
