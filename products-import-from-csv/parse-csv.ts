@@ -68,6 +68,7 @@ function getProductsFromRows(rows: any[]): any[] {
 
   function handleProduct(row: any) {
     products.push({
+      externalReference: `example-csv-imp-product-${row[keys.id]}`, // Enable update of exising item with same externalReference
       name: row[keys.name],
       variants: [],
     });

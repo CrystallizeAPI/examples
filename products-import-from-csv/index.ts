@@ -43,6 +43,7 @@ async function go() {
       {
         name: "Example products CSV import",
         shape: "example-csv-imp-folder",
+        externalReference: "example-csv-imp-folder", // Enable update of exising item with same externalReference
         children: products.map((product: any) => ({
           ...product,
           shape: "example-csv-imp-product",
