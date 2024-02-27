@@ -1,0 +1,19 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_TENANT_CONFIG {
+  tenant {
+    id
+    identifier
+    createdAt
+    logo {
+      width
+      height
+      url
+    }
+    language
+    defaults {
+      language
+      currency
+    }
+  }
+}

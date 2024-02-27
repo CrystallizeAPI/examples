@@ -1,0 +1,52 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/orders
+
+mutation createOrder {
+  orders {
+    create(
+      input: {
+        customer: {
+          firstName: "Legolas"
+          lastName: "Greenleaf"
+          identifier: "legolasgreenleaf@fellowship.com"
+          addresses: [
+            {
+              type: billing
+              streetNumber: "16"
+              street: "Greenwood"
+              city: "Woodland Realm"
+              country: "Ithilien"
+              postalCode: "9999"
+              email: "legolasgreenleaf@fellowship.com"
+            }
+          ]
+        }
+        cart: {
+          name: "Bow of the Galadhrim"
+          sku: "bow-galadhrim"
+          imageUrl: "https://media.crystallize.com/lotr/23/1/27/6/@200/bow-galadhrim.avif"
+          quantity: 1
+          price: {
+            gross: 1000
+            net: 800
+            tax: { name: "Tax", percent: 25 }
+            currency: "EUR"
+          }
+        }
+        payment: {
+          provider: custom
+          custom: {
+            properties: { property: "payment_method", value: "Invoice" }
+          }
+        }
+        total: {
+          gross: 1000
+          net: 800
+          currency: "EUR"
+          tax: { name: "Tax", percent: 25 }
+        }
+      }
+    ) {
+      id
+    }
+  }
+}

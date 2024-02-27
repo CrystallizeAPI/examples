@@ -1,0 +1,17 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_FOLDER_WITH_CHILDREN {
+  catalogue(language: "en", path: "PATH_TO_FOLDER_WITH_CHILDREN") {
+    id
+    name
+    path
+    children {
+      name
+      path
+      children {
+        name
+        path
+      }
+    }
+  }
+}

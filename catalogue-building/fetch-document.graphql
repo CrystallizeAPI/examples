@@ -1,0 +1,49 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_DOCUMENT {
+  catalogue(language: "en", path: "PATH_TO_DOCUMENT") {
+    id
+    name
+    path
+    ... on Document {
+      name
+      path
+      paths {
+        canonical
+        shortcuts {
+          path
+        }
+        aliases
+        history
+      }
+      components {
+        content {
+          ... on SingleLineContent {
+            text
+          }
+          ... on RichTextContent {
+            json
+          }
+          ... on ParagraphCollectionContent {
+            paragraphs {
+              title {
+                text
+              }
+              body {
+                json
+              }
+              images {
+                variants {
+                  url
+                  width
+                  height
+                }
+              }
+            }
+          }
+          # ... more content types
+        }
+      }
+    }
+  }
+}

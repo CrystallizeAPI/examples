@@ -1,0 +1,14 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
+# make sure to place cart before the orderIntent
+
+mutation PLACE_CART {
+  place(id: "CART_ID") {
+    state
+  }
+}
+
+query GET_ORDER_INTENT {
+  orderIntent(id: "CART_ID") {
+    order
+  }
+}

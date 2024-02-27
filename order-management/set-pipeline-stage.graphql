@@ -1,0 +1,13 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+mutation SET_PIPELINE_STAGE {
+  order {
+    setPipelineStage(
+      orderId: "ORDER_ID"
+      pipelineId: "PIPELINE_ID"
+      stageId: "STAGE_ID"
+    ) {
+      id
+    }
+  }
+}

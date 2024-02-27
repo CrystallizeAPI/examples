@@ -1,0 +1,29 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+query GET_WEBHOOK {
+  webhook {
+    get(id: "WEBHOOK_ID") {
+      id
+      name
+      event
+      url
+      concern
+      graphqlQuery
+      method
+      headers {
+        name
+        value
+      }
+      lastInvocation {
+        start
+        end
+        payload
+      }
+      pastInvocations {
+        start
+        end
+        payload
+      }
+    }
+  }
+}

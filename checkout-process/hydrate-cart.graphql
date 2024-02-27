@@ -1,0 +1,24 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
+
+mutation {
+  hydrate(
+    input: { items: [{ sku: "smeg-robot-pink-standard", quantity: 1 }] }
+  ) {
+    id
+    items {
+      name
+      price {
+        net
+        gross
+        taxAmount
+      }
+    }
+    total {
+      gross
+      net
+      taxAmount
+      currency
+    }
+    state
+  }
+}
