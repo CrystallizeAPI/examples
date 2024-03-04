@@ -1,0 +1,21 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+# The following mutation creates a webhook for order creation events.
+
+mutation CREATE_WEBHOOK {
+  webhook {
+    create(
+      input: {
+        name: "Order Creation"
+        tenantId: "TENANT_ID"
+        method: POST
+        event: "create"
+        concern: "orders"
+        url: "https://awesome.store/api/webhook/order/created"
+        graphqlQuery: "query GET_CREATED_ORDER_DETAILS($id: ID!) {\n  order {\n    get(id: $id) {\n      id\n      createdAt\n      customer {\n        identifier\n        firstName\n        lastName\n      }\n      total {\n        currency\n        gross\n        net\n      }\n      payment {\n      	...on StripePayment {\n          provider\n          paymentMethod\n        }\n        ...on CustomPayment {\n          provider\n          properties {\n            value\n          }\n        }\n      }\n      cart {\n        imageUrl\n        price {\n          gross\n        }\n        quantity\n        name\n      }\n    }\n  }\n}\n"
+      }
+    ) {
+      id
+    }
+  }
+}
+

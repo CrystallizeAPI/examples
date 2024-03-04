@@ -1,0 +1,29 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+mutation {
+  customer {
+    create(
+      input: {
+        tenantId: "YOUR_TENANT_ID"
+        identifier: "legolasgreenleaf@fellowship.com"
+        firstName: "Legolas"
+        lastName: "Greenleaf"
+        phone: "1234567"
+        email: "legolasgreenleaf@fellowship.com"
+        addresses: [
+          {
+            type: billing
+            streetNumber: "16"
+            street: "Greenwood"
+            city: "Woodland Realm"
+            country: "Ithilien"
+            postalCode: "9999"
+            email: "legolasgreenleaf@fellowship.com"
+          }
+        ]
+      }
+    ) {
+      identifier
+    }
+  }
+}

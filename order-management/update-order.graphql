@@ -1,0 +1,32 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+mutation ORDER_UPDATE {
+  order {
+    update(
+      id: "YOUR_ORDER_ID"
+      input: {
+        cart: {
+          name: "Bow of the Galadhrim"
+          sku: "bow-galadhrim"
+          imageUrl: "https://media.crystallize.com/lotr/23/1/27/6/@200/bow-galadhrim.avif"
+          quantity: 2
+          price: {
+            gross: 1200
+            net: 1000
+            tax: { name: "No Tax", percent: 25 }
+            currency: "EUR"
+          }
+          meta: { key: "Payment type", value: "Card" }
+        }
+        total: {
+          gross: 2400
+          net: 2000
+          currency: "No Tax"
+          tax: { name: "Tax", percent: 25 }
+        }
+      }
+    ) {
+      id
+    }
+  }
+}

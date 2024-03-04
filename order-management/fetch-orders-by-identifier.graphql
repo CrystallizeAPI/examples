@@ -1,0 +1,72 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+query GET_ALL_CUSTOMER_ORDERS {
+  order {
+    getMany(
+      tenantId: "YOUR_TENANT_ID"
+      sortField: createdAt
+      customerIdentifier: "YOUR_CUSTOMER_IDENTIFIER"
+    ) {
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+        totalNodes
+      }
+      edges {
+        cursor
+        node {
+          id
+          createdAt
+          updatedAt
+          customer {
+            identifier
+            firstName
+            lastName
+            addresses {
+              type
+              email
+              phone
+              street
+              city
+              postalCode
+              country
+            }
+          }
+          cart {
+            name
+            sku
+            imageUrl
+            quantity
+            price {
+              gross
+              net
+              discounts {
+                percent
+              }
+            }
+          }
+          total {
+            gross
+            net
+            currency
+            discounts {
+              percent
+            }
+            tax {
+              name
+              percent
+            }
+          }
+          pipelines {
+            stageId
+            pipeline {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}

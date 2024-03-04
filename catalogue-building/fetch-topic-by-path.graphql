@@ -1,0 +1,19 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_TOPIC_BY_PATH {
+  topic(path: "TOPIC_PATH", language: "en") {
+    id
+    name
+    path
+    childCount
+    language
+    children {
+      name
+      path
+      parent {
+        name
+        path
+      }
+    }
+  }
+}

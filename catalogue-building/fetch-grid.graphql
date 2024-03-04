@@ -1,0 +1,29 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_GRID {
+  grid(id: "GRID_ID") {
+    rows {
+      columns {
+        layout {
+          rowspan
+          colspan
+        }
+        item {
+          name
+          path
+          ... on Product {
+            type
+            name
+            path
+          }
+          ... on Document {
+            type
+            name
+            path
+          }
+          # add fields as needed
+        }
+      }
+    }
+  }
+}

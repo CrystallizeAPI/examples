@@ -1,0 +1,28 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/catalogue
+
+query GET_PRODUCT {
+  catalogue(language: "en", path: "PATH_TO_PRODUCT") {
+    id
+    name
+    path
+    ... on Product {
+      variants {
+        name
+        sku
+        isDefault
+        priceVariants {
+          identifier
+          price
+        }
+        stockLocations {
+          identifier
+          stock
+        }
+        attributes {
+          attribute
+          value
+        }
+      }
+    }
+  }
+}

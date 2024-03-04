@@ -1,0 +1,26 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+query GET_PIPELINE {
+  pipeline {
+    get(id: "YOUR_PIPELINE_ID") {
+      orders {
+        edges {
+          node {
+            id
+            customer {
+              identifier
+            }
+            cart {
+              productId
+              quantity
+              price {
+                net
+                gross
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
