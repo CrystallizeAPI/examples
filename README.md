@@ -10,7 +10,7 @@
   - [Fetch topics](./catalogue-building/fetch-topics.graphql)
   - [Fetch topic by path](./catalogue-building/fetch-topic-by-path.graphql)
   - [Fetch tenant config](./catalogue-building/fetch-tenant-config.graphql)
-- **Checkout process**: Examples GraphQL queries for everything checkout related. Cart, customer, order creation.
+- **Checkout process**: Example GraphQL queries for everything checkout-related. Cart, customer, order creation.
   - [Create customer](./checkout-process/create-customer.graphql)
   - [Create order](./checkout-process/create-order.graphql)
   - [Hydrate cart](./checkout-process/hydrate-cart.graphql)
