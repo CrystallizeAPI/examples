@@ -1,0 +1,39 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/search
+
+query SEARCH_BY_TOPICS {
+  search(
+    filter: {
+      searchTerm: "table"
+      type: PRODUCT
+      include: {
+        topicPaths: {
+          logicalOperator: AND
+          sections: [
+            { fields: { value: "/room/livingroom" } }
+            {
+              logicalOperator: OR
+              fields: [{ value: "/color/black" }, { value: "/color/white" }]
+            }
+          ]
+        }
+      }
+      productVariants: { isDefault: true }
+    }
+  ) {
+    edges {
+      node {
+        id
+        name
+        topics {
+          name
+          path
+        }
+        ... on Product {
+          matchingVariant {
+            price
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+#API Endpoint: https://api.crystallize.com/@your-tenant-identifier
+
+mutation CREATE_FLOW_STAGE {
+  createFlowStage(
+    input: { name: "Quality Check", position: 3 }
+    flowIdentifier: "translation"
+    identifier: "quality-check"
+  ) {
+    ... on FlowStage {
+      identifier
+    }
+    ... on FlowNotFoundError {
+      errorName
+      message
+    }
+  }
+}

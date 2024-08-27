@@ -1,0 +1,20 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
+
+mutation addExternalItem {
+	addExternalItem(id: "CART_ID", input: {
+		sku: "hammer-mjolnir"
+		name: "Mjolnir"
+		variant: {
+			price: {
+				net: 500.00
+				gross: 550.00
+			}
+			product: {
+				id: "4389955"
+				path: "/products/hammer/mjolnir"
+			}
+		}
+	}) {
+		id
+	}
+}

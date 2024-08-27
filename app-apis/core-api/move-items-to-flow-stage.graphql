@@ -1,0 +1,16 @@
+#API Endpoint: https://api.crystallize.com/@your-tenant-identifier
+
+mutation MOVE_ITEMS_TO_FLOW_STAGE {
+  addItemsToFlowStage(
+    items: [{ id: "ITEM_ID", language: "en" }]
+    stageIdentifier: "new"
+  ) {
+    ... on FlowContentList {
+      content {
+        stage {
+          identifier
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+#API Endpoint: https://api.crystallize.com/@your-tenant-identifier
+
+mutation DELETE_FLOW {
+  deleteFlow(identifier: "FLOW_IDENTIFIER") {
+    ... on DeleteCount {
+      removed
+    }
+  }
+}

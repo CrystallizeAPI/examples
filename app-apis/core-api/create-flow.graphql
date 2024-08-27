@@ -1,0 +1,25 @@
+#API Endpoint: https://api.crystallize.com/@your-tenant-identifier
+
+mutation CREATE_FLOW {
+  createFlow(
+    identifier: "translation"
+    input: {
+      name: "Translation"
+      type: item
+      stages: [
+        { identifier: "new", name: "New" }
+        { identifier: "translated", name: "Translated" }
+        { identifier: "approved", name: "Approved" }
+      ]
+    }
+  ) {
+    ... on Flow {
+      identifier
+      stageIdentifiers
+    }
+    ...on BasicError {
+      errorName
+      message
+    }
+  }
+}

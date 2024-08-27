@@ -1,0 +1,26 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/search
+
+query SEARCH_WITHIN_PRICE_RANGE {
+  search(
+    language: "en"
+    first: 50
+    filter: {
+      include: { paths: "/shop/kitchen" }
+      productVariants: { priceRange: { min: 1000, max: 3000 } }
+    }
+  ) {
+    aggregations {
+      totalResults
+      price {
+        min
+        max
+      }
+    }
+    edges {
+      node {
+        name
+        path
+      }
+    }
+  }
+}

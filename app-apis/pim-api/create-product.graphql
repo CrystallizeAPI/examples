@@ -1,0 +1,33 @@
+#API Endpoint: https://pim.crystallize.com/graphql
+
+mutation CreateItem {
+  product {
+    create(
+      input: {
+        name: "The Hobbit"
+        tenantId: "TENANT_ID"
+        shapeIdentifier: "book"
+        vatTypeId: "VAT_TYPE_ID"
+        tree: { parentId: "PARENT_ID" }
+        components: [
+          {
+            componentId: "name"
+            singleLine: { text: "The Hobbit by J.R.R. Tolkein" }
+          }
+        ]
+        variants: [
+          {
+            isDefault: true
+            name: "The Hobbit"
+            sku: "the-hobbit"
+            price: 100
+            attributes: { attribute: "Type", value: "Hardcover" }
+          }
+        ]
+      }
+      language: "en"
+    ) {
+      id
+    }
+  }
+}

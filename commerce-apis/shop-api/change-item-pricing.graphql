@@ -1,0 +1,14 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
+
+mutation changeCartItemPricing {
+	changeCartItemPricing(id: "CART_ID", input: {
+		sku: "mjolnir-hammer"
+		quantity: 2
+		price: {
+			net: 500.00
+			gross: 550.00
+		}
+	}){
+		id
+	}
+}

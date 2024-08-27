@@ -1,0 +1,37 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart/admin
+
+mutation CreatePromotion {
+  setPromotions(
+    input: {
+      identifier: "summer_sale_2024"
+      name: "Summer Sale 2024"
+      description: "Get amazing discounts on summer essentials!"
+      periods: [
+        { start: "2024-06-01T00:00:00Z", end: "2024-08-31T23:59:59Z" }
+      ]
+      triggers: {
+        minValue: 50.00
+        customerGroups: ["crystal_customers"]
+      }
+      targets: {
+        topics: ["summer_wear"]
+        exclusions: { skus: ["beach-shorts-blue", "beach-shorts-white"] }
+      }
+      limitations: {
+        maxUsage: 1000
+        maxUsagePerCustomer: 2
+        cumulativeDiscount: false
+        repeatable: true
+      }
+      mechanism: {
+        type: Percentage
+        value: 20.0
+      }
+    }
+  ) {
+    identifier
+    name
+    description
+    # Add other fields you want to return after creation
+  }
+}

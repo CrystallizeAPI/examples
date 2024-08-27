@@ -1,0 +1,22 @@
+#API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
+
+mutation setCustomer {
+	setCustomer(id: "CART_ID", input: {
+		isGuest: false 
+		identifier: "legolas@gmail.com" 
+		firstName: "Legolas" 
+		lastName: "Greenleaf" 
+		phone: "12345678" 
+		email: "legolas@gmail.com"
+		addresses: { 
+			type: delivery 
+			streetNumber: "16" 
+			street: "Greenwood" 
+			city: "Woodland Realm" 
+			country: "Ithilien" 
+			postalCode: "1408" 
+		}
+	}){
+		id
+	}
+}

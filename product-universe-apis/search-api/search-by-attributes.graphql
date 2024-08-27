@@ -1,0 +1,33 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/search
+
+query SEARCH_BY_ATTRIBUTES {
+  search(
+    language: "en"
+    filter: {
+      productVariants: {
+        attributes: [{ attribute: "color", values: ["black", "blue"] }]
+      }
+    }
+  ) {
+    aggregations {
+      variantAttributes {
+        attribute
+        value
+        count
+      }
+    }
+    edges {
+      node {
+        name
+        ... on Product {
+          matchingVariant {
+            attributes {
+              attribute
+              value
+            }
+          }
+        }
+      }
+    }
+  }
+}

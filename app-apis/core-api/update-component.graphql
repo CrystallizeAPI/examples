@@ -1,0 +1,31 @@
+#API Endpoints: https://api.crystallize.com/@your-tenant-identifier
+
+mutation UPDATE_COMPONENT(
+  $itemId: ID!
+  $language: String!
+  $input: ComponentInput!
+) {
+  updateComponent(itemId: $itemId, language: $language, component: $input) {
+    ... on UpdatedComponent {
+      updatedComponentPath
+      item {
+        id
+      }
+    }
+    ... on BasicError {
+      message
+    }
+  }
+}
+
+# Variables
+{
+  "itemId": "667ebaa70ba1a8f0380797b6",
+  "language": "en",
+  "input": {
+    "componentId": "name",
+    "singleLine": {
+      "text": "Classic colours"
+    }
+  }
+}

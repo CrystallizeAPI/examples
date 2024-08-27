@@ -1,0 +1,22 @@
+#API Endpoint: https://api.crystallize.com/your-tenant-identifier/search
+
+query SEARCH_BY_STOCK {
+  search(
+    language: "en"
+    filter: { type: PRODUCT, productVariants: { stock: { min: 10 } } }
+  ) {
+    aggregations {
+      totalResults
+      price {
+        min
+        max
+      }
+    }
+    edges {
+      node {
+        name
+        path
+      }
+    }
+  }
+}
