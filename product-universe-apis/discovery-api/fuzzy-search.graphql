@@ -1,0 +1,18 @@
+query FUZZY_SEARCH {
+  search(
+    term: "Aloc",
+    options: {
+      fuzzy: {
+        fuzziness: DOUBLE,
+        prefixLength: 3,
+        maxExpensions: 25
+      }
+    }
+  ) {
+    hits {
+      id
+    	name
+    	aliases
+    }
+  }
+}

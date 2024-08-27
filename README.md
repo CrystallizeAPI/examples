@@ -1,26 +1,13 @@
 ## Crystallize Examples
 
 - **Import utilities**: This is a collection of script examples that can be used to import and mutate data on your Crystallize [PIM](https://crystallize.com/product/product-information-management) tenant.
-- **Catalogue building**: Collection of GraphQL queries to fetch data from Crystallize.
-  - [Fetch document](./catalogue-building/fetch-document.graphql)
-  - [Fetch folder](./catalogue-building/fetch-folder.graphql)
-  - [Fetch folder with children](./catalogue-building/fetch-folder-with-children.graphql)
-  - [Fetch product](./catalogue-building/fetch-product.graphql)
-  - [Fetch grid](./catalogue-building/fetch-grid.graphql)
-  - [Fetch topics](./catalogue-building/fetch-topics.graphql)
-  - [Fetch topic by path](./catalogue-building/fetch-topic-by-path.graphql)
-  - [Fetch tenant config](./catalogue-building/fetch-tenant-config.graphql)
-- **Checkout process**: Example GraphQL queries for everything checkout-related. Cart, customer, order creation.
-  - [Create customer](./checkout-process/create-customer.graphql)
-  - [Create order](./checkout-process/create-order.graphql)
-  - [Hydrate cart](./checkout-process/hydrate-cart.graphql)
-  - [Place cart and create order intent](./checkout-process/order-intent-from-cart.graphql)
-- **Order management**: Collection of GraphQL queries for after an order has been placed.
-  - [Fetch order by ID](./order-management/fetch-order-by-id.graphql)
-  - [Fetch orders by identifier](./order-management/fetch-orders-by-identifier.graphql)
-  - [Update order](./order-management/update-order.graphql)
-  - [Set pipeline stage](./order-management/set-pipeline-stage.graphql)
-  - [Fetch pipeline stages](./order-management/fetch-pipeline-stages.graphql)
-  - [Fetch orders in a pipeline](./order-management/fetch-orders-in-pipeline.graphql)
-  - [Create webhook](./order-management/create-webhook.graphql)
-  - [Fetch webhook](./order-management/fetch-webhook.graphql)
+- **App APIs**: Collection of GraphQL queries and mutations for:
+  - [PIM API](./app-apis/pim-api/)
+  - [Core API](./app-apis/core-api/)
+- **Commerce APIs**: Example GraphQL queries & mutations for everything e-commerce related. Cart, promotions, orders, etc..
+  - [Orders API](./commerce-apis/orders-api/)
+  - [Shop API](./commerce-apis/shop-api/)
+- **Product Universe APIs**: Collection of GraphQL queries for the catalogue.
+  - [Catalogue API](./product-universe-apis/catalogue-api/)
+  - [Discovery API](./product-universe-apis/discovery-api/)
+  - [Search API](./product-universe-apis/search-api/)

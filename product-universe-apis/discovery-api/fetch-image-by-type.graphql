@@ -1,0 +1,15 @@
+query FETCH_IMAGE_BY_TYPE {
+	browse {
+		banner {
+			hits {
+				name
+				image {
+					variants(types: ["webp"], maxWidth: 100) {
+						url
+						width
+					}
+				}
+			}
+		}
+	}
+}
