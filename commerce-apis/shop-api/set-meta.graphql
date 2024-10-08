@@ -1,6 +1,6 @@
 #API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
 
-mutation setMeta {
+mutation SET_META {
 	setMeta(id: "CART_ID", meta: [{
 		key: "Paid via"
 		value: "invoice"

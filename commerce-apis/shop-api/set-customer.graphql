@@ -1,6 +1,6 @@
 #API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
 
-mutation setCustomer {
+mutation SET_CUSTOMER {
 	setCustomer(id: "CART_ID", input: {
 		isGuest: false 
 		identifier: "legolas@gmail.com" 

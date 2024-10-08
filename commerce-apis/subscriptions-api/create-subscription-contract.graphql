@@ -1,0 +1,30 @@
+#API Endpoint: https://api.crystallize.com/furnitut/subscriptions
+
+mutation CREATE_SUBSCRIPTION_CONTRACT {
+  subscriptionContracts {
+    create(input: {
+      tenantId: "TENANT_ID"
+      subscriptionPlan: {
+        identifier: "PLAN_IDENTIFIER"
+        periodId: "PERIOD_ID"
+      }
+      customerIdentifier: "legolasgreenleaf@fellowship.com"
+      item: {
+        name: "ITEM_NAME"
+        sku: "ITEM_SKU"
+      }
+      recurring: {
+        price: 10.00
+        currency: "EUR"
+      }
+      status: {
+        activeUntil: "2045-12-25T00:00:00"
+        renewAt: "2024-10-14T00:00:00"
+        price: 10.00
+        currency: "EUR"
+      }
+    }){
+      id
+    }
+  }
+}

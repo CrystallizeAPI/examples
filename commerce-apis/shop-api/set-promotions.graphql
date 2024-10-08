@@ -1,6 +1,6 @@
 #API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart/admin
 
-mutation CreatePromotion {
+mutation SET_PROMOTIONS {
   setPromotions(
     input: {
       identifier: "summer_sale_2024"

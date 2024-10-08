@@ -1,0 +1,19 @@
+#API Endpoint: https://api.crystallize.com/furnitut/subscriptions
+
+mutation UPDATE_SUBSCRIPTION_CONTRACT {
+  subscriptionContracts {
+    update(
+      id: "CONTRACT_ID"
+      input: {
+        status: {
+          activeUntil: "2045-12-25T00:00:00Z"
+          renewAt: "2024-10-14T00:00:00Z"
+          price: 10.00
+          currency: "EUR"
+        }
+      }
+    ) {
+      id
+    }
+  }
+}

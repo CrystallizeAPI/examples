@@ -1,0 +1,9 @@
+#API Endpoint: https://api.crystallize.com/furnitut/subscriptions
+
+mutation CANCEL_SUBSCRIPTION_CONTRACT {
+  subscriptionContracts {
+    cancel(id: "CONTRACT_ID"){ {
+      id
+    }
+  }
+}

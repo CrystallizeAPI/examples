@@ -1,7 +1,7 @@
 #API Endpoint: https://api.crystallize.com/your-tenant-identifier/orders
 #Pagination could be added to the query to limit the number of results returned.
 
-query {
+query FETCH_ORDERS_BY_CUSTOMER {
   orders {
     getAll(customerIdentifier: "cus_0001") {
       edges {

@@ -1,6 +1,6 @@
 #API Endpoint: https://api.crystallize.com/your-tenant-identifier/orders
 
-mutation createOrder {
+mutation CREATE_ORDER {
   orders {
     create(
       input: {

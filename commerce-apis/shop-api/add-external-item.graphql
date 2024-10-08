@@ -1,6 +1,6 @@
 #API Endpoint: https://shop-api.crystallize.com/your-tenant-identifier/cart
 
-mutation addExternalItem {
+mutation ADD_EXTERNAL_ITEM {
 	addExternalItem(id: "CART_ID", input: {
 		sku: "hammer-mjolnir"
 		name: "Mjolnir"

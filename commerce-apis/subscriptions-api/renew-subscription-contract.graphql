@@ -1,0 +1,9 @@
+#API Endpoint: https://api.crystallize.com/furnitut/subscriptions
+
+mutation RENEW_SUBSCRIPTION_CONTRACT {
+  subscriptionContracts {
+    renew(id: "CONTRACT_ID"){
+      id
+    }
+  }
+}
