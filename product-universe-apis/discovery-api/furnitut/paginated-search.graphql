@@ -1,0 +1,15 @@
+query SearchPagination {
+  search(
+    term: "chair", 
+    options: {fuzzy: {fuzziness: DOUBLE}},
+    filters: {shape: {in: ["product"] } }
+    pagination: {limit:4, skip:2}
+  )
+  {
+    hits {
+      ... on product {
+        name        
+      }
+    }
+  }
+}

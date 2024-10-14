@@ -1,0 +1,18 @@
+query FuzzySearch {
+  search(
+    term: "monster", 
+    options: {fuzzy: {fuzziness: SINGLE}},
+    filters: { shape: {in: ["product"] } }
+  )
+  {
+    hits {
+      ... on product {
+        name
+        variants{
+          name
+          price:defaultPrice
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+query FacetSearch {
+  search(
+    term: "chair",  
+    options: {fuzzy: {fuzziness: DOUBLE}}
+    filters: {shape: {in: ["product"] } }
+	  facets: {
+      topics: {limit: 10}
+      parentPaths: {limit:10, key: "category" }
+    }
+  )
+  {
+    summary{
+      facets
+    }
+    hits {
+      ... on product {
+        name
+        topics
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+query GetProducts {
+  browse {
+    product {
+      hits {
+        name
+        description(format: plainText)
+        dimensions {
+          weight
+          weightUnit
+        }
+        story {
+          images {
+            url
+          }
+        }
+        variants {
+          price: defaultPrice
+          firstImage {
+            variants(types: ["avif"], maxWidth: 200) {
+              url
+            }
+          }
+        }
+        relatedProducts {
+          variants {
+            name
+            price: defaultPrice
+          }
+        }
+      }
+    }
+  }
+}

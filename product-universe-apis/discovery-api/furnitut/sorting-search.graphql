@@ -1,0 +1,19 @@
+query SearchProductsSorting {
+  search(
+    term: "chair", 
+    options: {fuzzy: {fuzziness: DOUBLE}},
+    filters: {shape: {in: ["product"] } }
+    sorting: {variants_name:asc, price_default:desc }
+  )
+  {
+    hits {
+      ... on product {
+        name
+        variants{
+          name
+          price:defaultPrice
+        }
+      }
+    }
+  }
+}
