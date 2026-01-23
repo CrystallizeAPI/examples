@@ -1,0 +1,245 @@
+{
+  "version": "0.0.1",
+  "operations": [
+    {
+      "_ref": "rootCategory",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "product-category",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Demo",
+      "tree": { "parentId": "{{ defaults.rootItemId }}" },
+      "components": []
+    },
+    {
+      "_ref": "cat1",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "category-1",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Category 1",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": []
+    },
+    {
+      "_ref": "cat2",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "category-2",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Category 2",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": []
+    },
+    {
+      "_ref": "cat3",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "category-3",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Category 3",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": []
+    },
+    {
+      "_ref": "cat4",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "category-4",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Category 4",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": []
+    },
+    {
+      "_ref": "cat5",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "category-5",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Category 5",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": []
+    },
+    {
+      "_ref": "img1",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product1/800/600\" }}"
+    },
+    {
+      "_ref": "img2",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product2/800/600\" }}"
+    },
+    {
+      "_ref": "img3",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product3/800/600\" }}"
+    },
+    {
+      "_ref": "img4",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product4/800/600\" }}"
+    },
+    {
+      "_ref": "img5",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product5/800/600\" }}"
+    },
+    { 
+      "_ref": "p1",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-1",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 1",
+      "tree": { "parentId": "{{ cat1.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 1 Variant",
+          "sku": "sku-001",
+          "isDefault": true,
+          "images": [{ "key": "{{ img1.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 9.99 }]
+        }
+      ]
+    },
+    { 
+      "_ref": "p2",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-2",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 2",
+      "tree": { "parentId": "{{ cat2.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 2 Variant",
+          "sku": "sku-002",
+          "isDefault": true,
+          "images": [{ "key": "{{ img2.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 14.99 }]
+        }
+      ]
+    },
+    { 
+      "_ref": "p3",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-3",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 3",
+      "tree": { "parentId": "{{ cat3.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 3 Variant",
+          "sku": "sku-003",
+          "isDefault": true,
+          "images": [{ "key": "{{ img3.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 19.99 }]
+        }
+      ]
+    },
+    { 
+      "_ref": "p4",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-4",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 4",
+      "tree": { "parentId": "{{ cat4.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 4 Variant",
+          "sku": "sku-004",
+          "isDefault": true,
+          "images": [{ "key": "{{ img4.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 24.99 }]
+        }
+      ]
+    },
+    { 
+      "_ref": "p5",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-5",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 5",
+      "tree": { "parentId": "{{ cat5.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 5 Variant",
+          "sku": "sku-005",
+          "isDefault": true,
+          "images": [{ "key": "{{ img5.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 29.99 }]
+        }
+      ]
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ rootCategory.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ cat1.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ cat2.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ cat3.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ cat4.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ cat5.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p1.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p2.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p3.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p4.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p5.id }}",
+      "language": "en"
+    }
+  ]
+}

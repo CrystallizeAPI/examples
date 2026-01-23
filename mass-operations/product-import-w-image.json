@@ -1,0 +1,50 @@
+{
+  "version": "0.0.1",
+  "operations": [
+    {
+      "_ref": "rootCategory",
+      "intent": "folder/upsert",
+      "resourceIdentifier": "product-category",
+      "language": "en",
+      "shapeIdentifier": "folder",
+      "name": "Demo",
+      "tree": { "parentId": "{{ defaults.rootItemId }}" },
+      "components": []
+    },
+    {
+      "_ref": "img1",
+      "intent": "image/register",
+      "key": "{{ upload \"https://picsum.photos/seed/product1/800/600\" }}"
+    },    
+    { 
+      "_ref": "p1",
+      "intent": "product/upsert",
+      "resourceIdentifier": "p-1",
+      "language": "en",
+      "shapeIdentifier": "product",
+      "name": "Product 1",
+      "tree": { "parentId": "{{ rootCategory.id }}" },
+      "components": [],
+      "vatTypeId": "{{ defaults.vatTypeIds.[0] }}",
+      "variants": [
+        {
+          "name": "Product 1 Variant",
+          "sku": "sku-001",
+          "isDefault": true,
+          "images": [{ "key": "{{ img1.id }}" }],
+          "priceVariants": [{ "identifier": "default", "price": 9.99 }]
+        }
+      ]
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ rootCategory.id }}",
+      "language": "en"
+    },
+    {
+      "intent": "item/publish",
+      "itemId": "{{ p1.id }}",
+      "language": "en"
+    }
+  ]
+}

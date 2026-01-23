@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "operations": [
+   {
+     "intent": "product/variant/stock/modify",
+     "operation": "overwrite",
+     "quantity": 100,
+     "sku": "sku-001",
+     "stockLocationIdentifier": "default"
+   },
+   {
+     "intent": "product/variant/stock/modify",
+     "operation": "overwrite",
+     "quantity": 50,
+     "sku": "sku-002",
+     "stockLocationIdentifier": "default"
+   },
+   {
+     "intent": "product/variant/stock/modify",
+     "operation": "overwrite",
+     "quantity": 10,
+     "sku": "sku-003",
+     "stockLocationIdentifier": "default"
+   }
+  ]
+}
