@@ -1,0 +1,152 @@
+{
+  "version": "0.0.1",
+  "operations": [
+    {
+            "intent": "order/register",
+            "additionalInformation": "Please deliver between 9am-5pm",
+            "customer": {
+                "identifier": "b2c_norway_maria_hansen",
+                "type": "individual",
+                "firstName": "Maria",
+                "lastName": "Hansen",
+                "email": "foo@example.com"
+            },
+            "type": "standard",
+            "paymentStatus": "paid",
+            "total": {
+                "net": 1300, "gross": 1650, "currency": "EUR"
+            },
+            "cart": [
+                {
+                    "imageUrl": "https://media.crystallize.com/furnitut/24/9/4/1/@768/golden-pothos.avif",
+                    "name": "Golden Photos",
+                    "type": "standard",
+                    "group": "Plants",
+                    "meta": [
+                        {
+                            "key": "Size",
+                            "value": "Large"
+                        }
+                    ],
+                    "quantity": 2,
+                    "sku": "golden-photos-large",
+                    "subTotal": 
+                    {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    },
+                    "price": {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    }
+                },
+                {
+                    "imageUrl": "https://media.crystallize.com/furnitut/24/9/4/16/@768/pilea.avif",
+                    "name": "Pilea Peperomioides",
+                    "group": "Plants",
+                    "type": "bonus",
+                    "meta": [
+                        {
+                            "key": "color",
+                            "value": "blue"
+                        }
+                    ],
+                    "quantity": 2,
+                    "sku": "pilea-peperomioides",
+                    "subTotal": {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    },
+                    "price": {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    }
+                },
+                {
+                    "imageUrl": "https://media.crystallize.com/furnitut/24/11/19/6/@768/monstera-medium.avif",
+                    "name": "Monstera Deliciosa",
+                    "group": "Plants",
+                    "type": "standard",
+                    "meta": [
+                        {
+                            "key": "Size",
+                            "value": "Medium"
+                        }
+                    ],
+                    "quantity": 2,
+                    "sku": "monstera-deliciosa-medium",
+                    "subTotal": {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    },
+                    "price": {
+                        "currency": "EUR",
+                        "gross": 125,
+                        "net": 100,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    }
+                },
+                {
+                    "imageUrl": "https://media.crystallize.com/furnitut/24/9/5/9/@768/palissade-chaise-longue-red.avif",
+                    "name": "Palissade Chaise Longue",
+                    "group": "Furniture",
+                    "type": "standard",
+                    "meta": [
+                        {
+                            "key": "Color",
+                            "value": "Red"
+                        }
+                    ],
+                    "quantity": 2,
+                    "sku": "palissade-chaise-longue-red",
+                    "subTotal": {
+                        "currency": "EUR",
+                        "gross": 1250,
+                        "net": 1000,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    },
+                    "price": {
+                        "currency": "EUR",
+                        "gross": 1250,
+                        "net": 1000,
+                        "tax": {
+                            "name": "VAT",
+                            "percent": 25
+                        }
+                    }
+                }                
+            ]
+        }
+  ]
+}

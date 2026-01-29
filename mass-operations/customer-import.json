@@ -1,0 +1,41 @@
+{
+  "version": "0.0.1",
+  "operations": [
+    {  
+            "intent": "customer/group/upsert",
+            "identifier": "norway",
+            "name": "Norway"
+        },
+        {
+            "intent": "customer/upsert",
+            "identifier": "crystallize",
+            "companyName": "Crystallize",
+            "type": "organization",
+            "parents": [
+                {
+                    "identifier": "norway",
+                    "type": "customerGroup"
+                }
+            ]
+        },
+        {
+            "intent": "customer/upsert",
+            "identifier": "Bobby-Fisher",
+            "firstName": "Bobby",
+            "lastName": "Fisher",
+            "type": "individual",
+            "parents": [
+                {
+                    "identifier": "crystallize",
+                    "type": "customer"
+                }
+            ]
+        },
+        {
+            "intent": "customer/upsert",
+            "identifier": "Bobby-Fisher",
+            "email": "bobby.fisher@magnus.com",
+            "type": "individual"
+        }
+  ]
+}
